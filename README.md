@@ -8,7 +8,7 @@
 | --------- | -----:|
 | React  | Node |
 | Html     |  Flask  |
-| CSS      |  Scrapping  |
+| CSS      |  Xpath   |
 
 
 ### Contributors
