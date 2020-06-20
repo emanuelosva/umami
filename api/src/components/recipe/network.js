@@ -14,8 +14,8 @@ const router = express();
 
 // Recipes router
 router.get('/', listRecipe);
-router.post('/', createRecipe);
-router.patch('/:id', updateRecipe);
+router.post('/', addRecipe);
+router.put('/:id', updateRecipe);
 router.delete('/:id', removeRecipe);
 
 // Callbacks
@@ -27,8 +27,8 @@ function listRecipe(req, res, next) {
     .catch(next);
 };
 
-function createRecipe(req, res, next) {
-  controller.create(req.body)
+function addRecipe(req, res, next) {
+  controller.add(req.body)
     .then(recipe => {
       response.success(req, res, recipe, 201)
     })
