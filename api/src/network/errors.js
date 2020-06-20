@@ -14,3 +14,5 @@ const errors = (err, req, res, next) => {
 
   response.error(req, res, message, status, err);
 };
+
+module.exports = errors;

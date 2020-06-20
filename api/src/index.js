@@ -9,6 +9,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const errors = require('./network/errors');
 const db = require('./db');
 const config = require('../config');
 const PORT = config.port;
@@ -28,6 +29,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/', (req, res, next) => {
   res.send('Test docker connected!!!');
 });
+
+
+app.use(errors);
 
 // Expose
 app.listen(PORT, () => {
