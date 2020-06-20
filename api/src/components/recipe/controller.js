@@ -46,6 +46,10 @@ const add = async (body) => {
 };
 
 const update = (id, body) => {
+  if (!id || !body) {
+    return Promise.reject('No id or data')
+  }
+
   let recipe = {
     name: body.name,
     tag: body.tag,

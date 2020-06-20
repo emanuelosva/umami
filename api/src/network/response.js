@@ -30,7 +30,7 @@ exports.error = (req, res, message, status, details) => {
   let statusMessage = message || STATUS_MESSAGES[statusCode];
 
   config.enviroment.development
-    ? console.log('[error] ->' + details) : null;
+    ? console.log('[error] -> ' + details) : null;
 
   res.status(statusCode).send({
     error: true,

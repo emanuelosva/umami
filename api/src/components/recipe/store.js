@@ -7,15 +7,34 @@
 */
 
 const Model = require('./model');
+const config = require('../../../config');
 
 const list = async () => {
-  const data = await Model.find();
-  return data;
+  try {
+    const data = await Model.find();
+    return data;
+  } catch (err) {
+    config.enviroment.development
+      ? console.error(`[store] -> Error: ${err}`)
+      : null;
+    return Promise.reject('Internal error')
+  }
 };
 
 const get = async (id) => {
-  const data = await Model.findById(id)
-  return data;
+  try {
+    if (!id) {
+      return Promise.reject('Ivalid data');
+    }
+
+    const data = await Model.findById(id)
+    return data;
+  } catch (err) {
+    config.enviroment.development
+      ? console.error(`[store] -> Error: ${err}`)
+      : null;
+    return Promise.reject('Not Found')
+  }
 };
 
 const add = async (data) => {
@@ -23,28 +42,48 @@ const add = async (data) => {
     const newRecipe = new Model(data);
     return newRecipe.save();
   } catch (err) {
-    return err
+    config.enviroment.development
+      ? console.error(`[store] -> Error: ${err}`)
+      : null;
+    return Promise.reject('Internal error')
   }
 };
 
 const update = async (id, data) => {
-  const recipe = await Model.findById(id);
+  try {
+    const recipe = await Model.findById(id);
 
-  recipe.name = data.name;
-  resipe.tag = data.tag;
-  recipe.servings = data.servings;
-  recipe.time = data.time;
-  recipe.ingredients = data.ingredients;
-  recipe.instructions = data.instructions;
-  recipe.description = data.description;
-  recipe.url_img = data.url_img;
+    recipe.name = data.name;
+    recipe.tag = data.tag;
+    recipe.servings = data.servings;
+    recipe.time = data.time;
+    recipe.ingredients = data.ingredients;
+    recipe.instructions = data.instructions;
+    recipe.description = data.description;
+    recipe.url_img = data.url_img;
 
-  const updatedRecipe = await recipe.save()
-  return updatedRecipe;
+    const updatedRecipe = await recipe.save()
+    return updatedRecipe;
+  } catch (err) {
+    config.enviroment.development
+      ? console.error(`[store] -> Error: ${err}`)
+      : null;
+    return Promise.reject('Internal error')
+
+  }
 };
 
 const remove = async (id) => {
-  return Model.deleteOne({ _id: id });
+  try {
+    return Model.deleteOne({ _id: id });
+
+  } catch (error) {
+    config.enviroment.development
+      ? console.error(`[store] -> Error: ${err}`)
+      : null;
+    return Promise.reject('Internal error')
+
+  }
 };
 
 module.exports = {
