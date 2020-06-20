@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const recipe = require('./components/recipe/network');
+const admin = require('./components/admin/network');
 
 const errors = require('./network/errors');
 const db = require('./db');
@@ -32,7 +33,8 @@ app.get('/', (req, res, next) => {
   res.send('Test docker connected!!!');
 });
 
-app.use('/api/recipe', recipe)
+app.use('/api/recipe', recipe);
+app.use('/api/admin', admin);
 app.use(errors);
 
 // Expose
