@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const recipe = require('./components/recipe/network');
+const admin = require('./components/admin/network');
 const adminPanel = require('./components/admin/panel');
 
 const errors = require('./network/errors');
@@ -34,6 +35,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.use('/api/recipe', recipe);
+app.use('/api/admin', admin);
 app.use('/api/admin/panel', adminPanel);
 app.use(errors);
 
