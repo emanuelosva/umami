@@ -38,7 +38,7 @@ function addRecipe(req, res, next) {
 };
 
 function updateRecipe(req, res, next) {
-  controller.update(req.params.id)
+  controller.update(req.params.id, req.body)
     .then(recipe => {
       response.success(req, res, recipe, 201)
     })
