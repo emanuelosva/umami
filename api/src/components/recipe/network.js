@@ -20,7 +20,9 @@ router.delete('/:id', removeRecipe);
 
 // Callbacks
 function listRecipe(req, res, next) {
-  controller.list()
+  const filterRecipe = req.query.recipe || null;
+
+  controller.list(filterRecipe)
     .then(list => {
       response.success(req, res, list, 200);
     })
