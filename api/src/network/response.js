@@ -5,6 +5,7 @@
  * @author Emanuel Osorio <emanuelosva@gmail.com>
  *
 */
+const config = require('../../config');
 
 const STATUS_MESSAGES = {
   '200': 'Ok',
@@ -27,6 +28,9 @@ exports.success = (req, res, message, status) => {
 exports.error = (req, res, message, status, details) => {
   let statusCode = status || 500;
   let statusMessage = message || STATUS_MESSAGES[statusCode];
+
+  config.enviroment.development
+    ? console.log('[error] ->' + details) : null;
 
   res.status(statusCode).send({
     error: true,
