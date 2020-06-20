@@ -9,7 +9,7 @@
 const { Schema, model } = require('mongoose');
 
 const adminSchema = new Schema({
-  name: {
+  user: {
     type: String,
     required: true,
   },
