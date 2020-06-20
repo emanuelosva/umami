@@ -9,6 +9,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const recipe = require('./components/recipe/network');
+
 const errors = require('./network/errors');
 const db = require('./db');
 const config = require('../config');
@@ -30,7 +32,7 @@ app.get('/', (req, res, next) => {
   res.send('Test docker connected!!!');
 });
 
-
+app.use('/api/recipe', recipe)
 app.use(errors);
 
 // Expose
