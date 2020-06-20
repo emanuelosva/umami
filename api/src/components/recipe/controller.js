@@ -18,7 +18,17 @@ const list = async (filter) => {
   return recipe;
 };
 
-const add = (body) => {
+const add = async (body) => {
+  let incompletData = (
+    !body.name || !body.tag || !body.servings || !body.time || !body.ingredients
+    || !body.instructions || !body.description || !body.url_img
+  );
+
+  if (incompletData) {
+    console.log(body.url_img)
+    return Promise.reject('Invalid data');
+  }
+
   let recipe = {
     name: body.name,
     tag: body.tag,
@@ -28,13 +38,11 @@ const add = (body) => {
     instructions: body.instructions,
     description: body.description,
     url_img: body.url_img,
+    date: new Date(),
   };
 
-  body.id
-    ? recipe.id = body.id
-    : recipe.id = nonoid();
-
-  return store.add(recipe);
+  const newRecipe = await store.add(recipe);
+  return newRecipe;
 };
 
 const update = (id, body) => {

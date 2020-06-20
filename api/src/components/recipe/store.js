@@ -19,8 +19,12 @@ const get = async (id) => {
 };
 
 const add = async (data) => {
-  const newRecipe = new Model(data);
-  return newRecipe.save();
+  try {
+    const newRecipe = new Model(data);
+    return newRecipe.save();
+  } catch (err) {
+    return err
+  }
 };
 
 const update = async (id, data) => {
