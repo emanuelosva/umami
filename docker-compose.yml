@@ -1,0 +1,23 @@
+version: "3"
+
+# Microservices
+services:
+  # Api for serve scrapper
+  flask:
+    build: ./scrapper
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./scrapper:/app
+
+  # Api for manage db
+  api:
+    build: ./api
+    environment:
+      FLASK_API_URL: "http://flask:5000"
+    depends_on:
+      - flask
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./api:/usr/src

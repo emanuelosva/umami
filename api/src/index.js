@@ -19,6 +19,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Router
+app.get('/', (req, res, next) => {
+  res.send('Test docker connected!!!');
+});
 
 // Expose
 app.listen(PORT, () => {
