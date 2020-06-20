@@ -8,9 +8,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const config = require('../config');
 
+const db = require('./db');
+const config = require('../config');
 const PORT = config.port;
+
+// DB connection
+db(config.db.dbUri);
+
+// Server initialization
 const app = express();
 
 // App extensiones
