@@ -6,8 +6,10 @@
  *
 */
 
-const nonoid = require('nanoid').nanoid;
-const store = require('./store');
+const storeManage = require('../../store');
+const Model = require('./model');
+
+const store = storeManage(Model);
 
 const list = async (filter) => {
   let recipe;
@@ -25,7 +27,6 @@ const add = async (body) => {
   );
 
   if (incompletData) {
-    console.log(body.url_img)
     return Promise.reject('Invalid data');
   }
 
@@ -65,6 +66,10 @@ const update = (id, body) => {
 };
 
 const remove = (id) => {
+  if (!id) {
+    return Promise.reject('No id');
+  }
+
   return store.remove(id);
 };
 
