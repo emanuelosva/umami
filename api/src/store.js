@@ -6,6 +6,8 @@
  *
 */
 
+const config = require('../config');
+
 function store(injectedModel) {
 
   const Model = injectedModel
@@ -54,8 +56,10 @@ function store(injectedModel) {
     try {
       const admin = await Model.findById(id);
 
-      admin.user = data.user;
-      admin.password = data.password;
+      keys = Object.keys(data);
+      keys.forEach(item => {
+        admin[item] = data[item];
+      });
 
       const updatedAdmin = await admin.save();
       return updatedAdmin;
