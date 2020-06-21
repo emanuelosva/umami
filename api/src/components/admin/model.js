@@ -19,6 +19,6 @@ const adminSchema = new Schema({
   }
 });
 
-const _model = model('Amin', adminSchema, 'admins');
+const _model = model('Admin', adminSchema, 'admins');
 
 module.exports = _model;
