@@ -41,10 +41,10 @@ const update = (id, body) => {
 
   let admin = {
     user: body.user,
-    passwod: body.passwod,
+    password: body.password,
   }
 
-  return store.update(admin);
+  return store.update(id, admin);
 };
 
 const remove = (id) => {
