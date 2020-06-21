@@ -1,1 +1,1 @@
-  """Main for Scrapper"""
+"""Main for Scrapper"""
