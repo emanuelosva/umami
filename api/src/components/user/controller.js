@@ -17,7 +17,7 @@ const list = async (filter) => {
     ? user = await store.get(filter)
     : user = await store.list()
 
-  return recipe;
+  return user;
 };
 
 const add = async (body) => {
