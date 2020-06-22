@@ -10,6 +10,9 @@ const config = {
   db: {
     dbUri: `mongodb+srv://${dbUser}:${dbPassword}@${dbHost}/${dbName}?retryWrites=true&w=majority`
   },
+  auth: {
+    secret: process.env.AUTH_SECRET || 'secret'
+  },
   enviroment: {
     development: process.env.DEVELOPMENT || false
   },
