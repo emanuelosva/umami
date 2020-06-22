@@ -25,6 +25,13 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  created: {
+    type: Date,
+    required: true,
+  },
+  updated: {
+    type: Date,
+  }
 });
 
 const _model = model('User', userSchema, 'users');
