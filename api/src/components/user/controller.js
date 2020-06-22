@@ -29,6 +29,7 @@ const add = async (body) => {
   let user = {
     name: body.name,
     email: body.email,
+    plan: body.plan,
     password: body.password,
     created: new Date(),
     updated: new Date(),
@@ -47,6 +48,7 @@ const update = (id, body) => {
     name: body.name,
     email: body.email,
     password: body.password,
+    plan: body.plan,
     updated: new Date(),
   };
 
