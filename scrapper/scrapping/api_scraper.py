@@ -12,7 +12,8 @@ def get_list_dict_recipes():
 
 @app.route('/Hello_World')
 def hello_world():
-    return "Hello World"
+    
+    return f"Hello World"
 
 
 if __name__ == "__main__":
