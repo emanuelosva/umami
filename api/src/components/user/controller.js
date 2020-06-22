@@ -7,6 +7,7 @@
 */
 
 const storeManage = require('../../store');
+const auth = require('../../auth');
 const Model = require('./model');
 
 const store = storeManage(Model);
@@ -30,7 +31,7 @@ const add = async (body) => {
     name: body.name,
     email: body.email,
     plan: body.plan,
-    password: body.password,
+    password: await auth.hash(body.password),
     created: new Date(),
     updated: new Date(),
   };
@@ -39,7 +40,7 @@ const add = async (body) => {
   return newUser;
 };
 
-const update = (id, body) => {
+const update = async (id, body) => {
   if (!id || !body) {
     return Promise.reject('No id or data')
   }
@@ -47,7 +48,7 @@ const update = (id, body) => {
   let user = {
     name: body.name,
     email: body.email,
-    password: body.password,
+    password: await auth.hash(body.password),
     plan: body.plan,
     updated: new Date(),
   };

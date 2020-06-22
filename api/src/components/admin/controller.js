@@ -7,6 +7,7 @@
 */
 
 const storeManage = require('../../store');
+const auth = require('../../auth');
 const Model = require('./model');
 
 const store = storeManage(Model);
@@ -27,21 +28,21 @@ const add = async (body) => {
 
   const admin = {
     user: body.user,
-    password: body.password
+    password: await auth.hash(body.password),
   }
 
   const newAdmin = await store.add(admin);
   return newAdmin;
 }
 
-const update = (id, body) => {
+const update = async (id, body) => {
   if (!id || !body) {
     return Promise.reject('Invalid data');
   }
 
-  let admin = {
+  const admin = {
     user: body.user,
-    password: body.password,
+    password: await auth.hash(body.password),
   }
 
   return store.update(id, admin);
