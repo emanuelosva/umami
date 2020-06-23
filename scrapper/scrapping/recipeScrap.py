@@ -1,6 +1,5 @@
 """Main for Scrapper"""
 
-
 _URL_HOME ="https://www.recetasnestle.com.co"
 _URL_RECETAS = "https://www.recetasnestle.com.co/recetas"
 
@@ -15,15 +14,15 @@ _XPATH_RECIPE_INSTRUCTIONS = '/html/body//div[@class = "col col-instructions"]//
 _XPATH_RECIPE_IMAGE = '//div[@class = "image"]/img/@data-src'
 
 import re 
-import  scrap_fun 
+from scrap_fun import get_links, create_url, get_tree
 
-def run_scapper():
+def run_scapper(num_of_recipies=10):
     categories_link = get_links(_URL_RECETAS, _XPATH_LINKS_CATEGORY_RECIPES)
     categories_URL = create_url(_URL_HOME, categories_link)
 
     recipe_links = []
     for categories_url in categories_URL:
-        recipe_links.extend( get_links(categories_url, _XPATH_LINKS_RECIPES))
+        recipe_links.extend(get_links(categories_url, _XPATH_LINKS_RECIPES))
     
     recipe_links= list(set(recipe_links))
     recipes_URL = create_url(_URL_HOME, recipe_links)
@@ -57,7 +56,7 @@ def run_scapper():
         if  recipe_dict:
             id_recipe += 1
             recipes_dict_dict[id_recipe] = recipe_dict
-            if id_recipe == 10:
+            if id_recipe == num_of_recipies:
                 break
 
     return recipes_dict_dict
