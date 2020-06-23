@@ -9,7 +9,7 @@ The three microservice are:
 
 >* **website**: A beautiful frontend made in React
 >* **api**: An elegan API for serving and manage info for the UI
->* **scrapper**: Is a tool for scrapping some food websites and get data for the db.
+>* **scraper**: Is a tool for scraping some food websites and get data for the db.
 
 All app is dockerizated for create an homogenious and multiplaform workspace and to facilitate the deployment of the application.
 
