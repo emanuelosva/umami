@@ -1,8 +1,9 @@
 """Entry Point for Scrappin-Flask Api"""
 from flask import Flask
+from app import create_app
 from scrapping import SCRAPPING
 
-app=Flask(__name__)
+app=create_app()
 
 scrapping = SCRAPPING
 
