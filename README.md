@@ -25,10 +25,10 @@ All app is dockerizated for create an homogenious and multiplaform workspace and
 To install and run this proyect:
 1. Configure your credentials for db connection in `.env` files.
 2. Run: `docker-compose up -d`
-3. If do you want to se logs: `docker-compose logs services_name` (api, flask, website)
+3. If do you want to see logs, run: `docker-compose logs services_name` (api, flask, website)
 
 To turn down the server and clean all containers:
-1. Run: `docker-compose down`
+* Run: `docker-compose down`
 
 
 ### Contributors
