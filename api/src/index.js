@@ -11,6 +11,7 @@ const cors = require('cors');
 
 const recipe = require('./components/recipe/network');
 const user = require('./components/user/network');
+const shop = require('./components/shop/network');
 const admin = require('./components/admin/network');
 const adminPanel = require('./components/admin/panel');
 
@@ -37,6 +38,7 @@ app.get('/', (req, res, next) => {
 
 app.use('/api/recipe', recipe);
 app.use('/api/user', user);
+app.use('/api/shop', shop);
 app.use('/api/admin', admin);
 app.use('/api/admin/panel', adminPanel);
 app.use(errors);
