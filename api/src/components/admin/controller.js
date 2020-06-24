@@ -6,11 +6,8 @@
  *
 */
 
-const storeManage = require('../../store');
 const auth = require('../../auth');
-const Model = require('./model');
-
-const store = storeManage(Model);
+const store = require('./store');
 
 const list = async (filter) => {
   let admin;

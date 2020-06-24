@@ -24,6 +24,9 @@ const userSchema = new Schema({
   plan: {
     type: String,
   },
+  shops: [{
+    type: Schema.ObjectId,
+  }],
   created: {
     type: Date,
     required: true,
