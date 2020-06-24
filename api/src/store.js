@@ -8,14 +8,14 @@
 
 const config = require('../config');
 
-function store(injectedModel) {
+class Store {
+  constructor(injectedModel) {
+    this.Model = injectedModel
+  }
 
-  const Model = injectedModel
-
-
-  const list = async () => {
+  async list() {
     try {
-      const data = await Model.find();
+      const data = await this.Model.find();
       return data;
     } catch (err) {
       config.enviroment.development
@@ -26,9 +26,9 @@ function store(injectedModel) {
     }
   };
 
-  const get = async (id) => {
+  async get(id) {
     try {
-      const data = await Model.findById(id);
+      const data = await this.Model.findById(id);
       return data;
     } catch (err) {
       config.enviroment.development
@@ -39,10 +39,10 @@ function store(injectedModel) {
     }
   };
 
-  const add = async (data) => {
+  async add(data) {
     try {
-      const newAdmin = new Model(data);
-      return newAdmin.save();
+      const newEntity = new this.Model(data);
+      return newEntity.save();
     } catch (err) {
       config.enviroment.development
         ? console.log(`[store] -> Error: ${err}`)
@@ -52,17 +52,17 @@ function store(injectedModel) {
     }
   };
 
-  const update = async (id, data) => {
+  async update(id, data) {
     try {
-      const admin = await Model.findById(id);
+      const entity = await this.Model.findById(id);
 
       keys = Object.keys(data);
       keys.forEach(item => {
-        admin[item] = data[item];
+        entity[item] = data[item];
       });
 
-      const updatedAdmin = await admin.save();
-      return updatedAdmin;
+      const updatedEntity = await entity.save();
+      return updatedEntity;
     } catch (err) {
       config.enviroment.development
         ? console.log(`[store] -> Error: ${err}`)
@@ -72,9 +72,9 @@ function store(injectedModel) {
     }
   };
 
-  const remove = async (id) => {
+  async remove(id) {
     try {
-      return Model.deleteOne({ _id: id });
+      return this.Model.deleteOne({ _id: id });
     } catch (err) {
       config.enviroment.development
         ? console.log(`[store] -> Error: ${err}`)
@@ -82,15 +82,7 @@ function store(injectedModel) {
 
       return Promise.reject('Internal error');
     }
-  };
-
-  return {
-    list,
-    get,
-    add,
-    update,
-    remove
   };
 };
 
-module.exports = store;
+module.exports = Store;
