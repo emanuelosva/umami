@@ -19,7 +19,7 @@ router.delete('/:id', removeShop);
 
 // Callbacks
 function listShop(req, res, next) {
-  const filterUser = req.query.shop || null;
+  const filterShop = req.query.shop || null;
 
   controller.list(filterShop)
     .then(list => {
