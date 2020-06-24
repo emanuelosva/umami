@@ -12,3 +12,6 @@ query-string==2019.4.13
 requests==2.24.0
 urllib3==1.25.9
 Werkzeug==1.0.1
+
+flask==1.0.2 
+Flask-PyMongo==2.3.0
