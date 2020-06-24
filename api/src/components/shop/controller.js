@@ -7,6 +7,7 @@
 */
 
 const store = require('./store');
+const userController = require('../user/controller');
 
 const list = async (filter) => {
   let recipe;
@@ -34,6 +35,10 @@ const add = async (body) => {
   };
 
   const newShop = await store.add(shop);
+
+  // Save the shop in user info
+  userController.addShop(shop.username, newShop);
+
   return newShop;
 };
 

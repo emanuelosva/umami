@@ -37,6 +37,14 @@ const add = async (body) => {
   return newUser;
 };
 
+const addShop = async (username, shop) => {
+  if (!username || !shop) {
+    return Promise.reject('No username or id')
+  }
+
+  store.addShop(username, shop);
+};
+
 const update = async (id, body) => {
   if (!id || !body) {
     return Promise.reject('No id or data')
@@ -64,6 +72,7 @@ const remove = (id) => {
 module.exports = {
   list,
   add,
+  addShop,
   update,
   remove,
 };
