@@ -1,5 +1,5 @@
 """Entry Point for Scrappin-Flask Api"""
-from flask import Flask
+from flask import Flask, jsonify
 from app import create_app
 from scraping import recipeScrap
 from app.mongo_db import add_description
@@ -12,10 +12,14 @@ scraping = recipeScrap.run_scapper(num_of_recipies=2)
 def init():
     values_list = []
     descriptions = []
+    ingredients = []
+    descriptions_group = []
+
     for key, value in scraping.items():
         values_list.append(value)
         
         for recipe in values_list:
-            description.append(recipe['description'])
+            descriptions.append(recipe['description'])
     
-    return descriptions
+    for description in descriptions:
+        return description
