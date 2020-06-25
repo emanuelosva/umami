@@ -1,7 +1,7 @@
 """Entry Point for Scrappin-Flask Api"""
-from flask import Flask, jsonify, redirect, url_for
-from app import create_app
+from flask import Flask, jsonify
 from scraping import recipeScrap
+from app import create_app
 from app.mongo_db import insert_recipe
 
 app=create_app()
@@ -9,9 +9,9 @@ app=create_app()
 scraping = recipeScrap.run_scapper(num_of_recipies=2)
 
 @app.route('/')
-def init():
+def index():
 
-    for key, recipe in scraping.items():     
-        insert_recipe(recipe)    
-    
-    return "OK"
+    for key, value in scraping.items():
+        recipe = jsonify(value)
+        
+    return recipe

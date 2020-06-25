@@ -1,3 +1,2 @@
 FLASK_APP=main.py
 FLASK_ENV=deploy
-FLASK_DEBUG=1

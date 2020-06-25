@@ -2,3 +2,4 @@ import os
 
 CONECTION_STRING = os.environ.get('CONECTION_STRING')
 
+print(CONECTION_STRING)
