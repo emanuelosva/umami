@@ -3,7 +3,7 @@ from flask_pymongo import PyMongo
 import os
 
 CONECTION_STRING = os.environ.get('CONECTION_STRING')
-
+mongo = PyMongo()
 client = pymongo.MongoClient(CONECTION_STRING)
 db = client.get_database('db_flaskuser_umami')
 
