@@ -10,7 +10,7 @@ scraping = recipeScrap.run_scapper(num_of_recipies=2)
 
 @app.route('/')
 def init():
-    recipes_list = []
+
     descriptions = []
     ingredients = []
     instructions = []
@@ -20,11 +20,14 @@ def init():
     url_images = []
     descriptions_group = []
 
-    for key, value in scraping.items():
-        recipes_list.append(value)       
+    for key, value in scraping.items():     
         descriptions.append(value["description"])
         ingredients.append(value["ingredients"])
         instructions.append(value["instructions"])
+        names.append(value["name"])
+        servings.append(value["servings"])
+        times.append(value["time"])
+        url_images.append(value["url_img"])
 
         
     for ingredient in ingredients:
