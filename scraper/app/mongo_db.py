@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_pymongo import pymongo
 
-CONECTION_STRING = "mongodb+srv://<username>:<password>@cluster0-cialg.mongodb.net/umami?retryWrites=true&w=majority"
+CONECTION_STRING = "mongodb+srv://db_flaskuser_umami:U4zceOovfrOcKlnb@cluster0-cialg.mongodb.net/umami?retryWrites=true&w=majority"
 
 client = pymongo.MongoClient(CONECTION_STRING)
 db = client.get_database('db_flaskuser_umami')
@@ -27,5 +27,5 @@ def add_servings(servings):
 def add_time(time):
     pass
 
-def add_url_img(url_image):
+def add_url_img(url_images):
     pass
