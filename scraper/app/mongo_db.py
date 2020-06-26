@@ -11,3 +11,9 @@ CONECTION_STRING = os.getenv('CONECTION_STRING')
 app.config["MONGO_URI"] = CONECTION_STRING
 mongo = PyMongo(app)
 
+
+def insert_recipe(recipe):
+    recipe_collection = mongo.db.recipes
+    recipe_collection.insert_one(recipe)
+    return "Recipe add with success" 
+
