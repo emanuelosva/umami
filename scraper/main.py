@@ -2,7 +2,7 @@
 from flask import Flask, jsonify
 from scraping import recipeScrap
 from app import create_app
-from app.mongo_db import insert_recipe
+
 
 app=create_app()
 
