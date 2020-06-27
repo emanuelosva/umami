@@ -98,8 +98,3 @@ def run_scapper(num_of_recipies=10):
                 break
 
     return recipes_dict_dict
-
-
-
-if __name__ == "__main__":
-    print(run_scapper(5))
