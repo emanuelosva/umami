@@ -19,6 +19,7 @@ def create_url(url_home,links):
 
     return news_urls
 
+
 def get_tree(url):
     try:
         pageContent = requests.get(url)
