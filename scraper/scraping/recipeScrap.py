@@ -13,26 +13,65 @@ _XPATH_RECIPE_INGREDIENTS = '/html/body//div[@class = "col col-ingredients"]//ul
 _XPATH_RECIPE_INSTRUCTIONS = '/html/body//div[@class = "col col-instructions"]//ol/li'
 _XPATH_RECIPE_IMAGE = '//div[@class = "image"]/img/@data-src'
 
+import random
 import re 
+<<<<<<< HEAD
 from .scrap_fun import get_links, create_url, get_tree
+=======
+from scrap_fun import get_links, create_url, get_tree 
+>>>>>>> 65e6c410d84595192aa74cb86e2b7fac3d627f37
 
 def run_scapper(num_of_recipies=10):
-    categories_link = get_links(_URL_RECETAS, _XPATH_LINKS_CATEGORY_RECIPES)
-    categories_URL = create_url(_URL_HOME, categories_link)
+    #categories_link = get_links(_URL_RECETAS, _XPATH_LINKS_CATEGORY_RECIPES)
+    categories_URL = [
+                      "https://www.recetasnestle.com.co/categorias/pastas",
+                      "https://www.recetasnestle.com.co/categorias/sopas-y-cremas",
+                      "https://www.recetasnestle.com.co/categorias/granos",
+                      "https://www.recetasnestle.com.co/categorias/arroz",
+                      "https://www.recetasnestle.com.co/categorias/carnes",
+                      "https://www.recetasnestle.com.co/categorias/pescado",
+                      "https://www.recetasnestle.com.co/categorias/pollo" ,
+                      "https://www.recetasnestle.com.co/categorias/con-vegetales",
+                      "https://www.recetasnestle.com.co/categorias/postres-faciles",
+                      "https://www.recetasnestle.com.co/categorias/base-de-leche",
+                      "https://www.recetasnestle.com.co/categorias/flan-pudding",
+                      "https://www.recetasnestle.com.co/categorias/tortas-y-ponques",
+                      "https://www.recetasnestle.com.co/categorias/chocolate"
 
-    recipe_links = []
-    for categories_url in categories_URL:
-        recipe_links.extend(get_links(categories_url, _XPATH_LINKS_RECIPES))
+                    ] 
     
-    recipe_links= list(set(recipe_links))
-    recipes_URL = create_url(_URL_HOME, recipe_links)
+    recipe_links = []
 
+    for categories_url in categories_URL:
+
+        categoria = categories_url.split("/")[-1] 
+        
+        if categoria in {"pastas" }:
+            categoria = "Pastas"
+        elif categoria in {"sopas-y-cremas"}:
+            categoria = "Sopas y Cremas"
+        elif categoria in {"granos", "arroz"}:
+            categoria = "Granos"
+        elif categoria in {"con-vegetales"}:
+            categoria = "Vegtariana"
+        elif categoria in {"carnes", "pescado",  "pollo" }:
+            categoria = "Carnes"
+        elif categoria in {"postres-faciles", "base-de-leche", "flan-pudding", "tortas-y-ponques", "chocolate" }:
+            categoria = "Postres"
+
+        recipe_category = create_url(_URL_HOME, get_links(categories_url, _XPATH_LINKS_RECIPES))
+        category_list = [categoria]*len(recipe_category)
+        recipe_links.extend(list(zip(recipe_category , category_list)))
+                
+    
+    recipe_links = list(set(recipe_links))
+    
     recipes_dict_dict={}
     id_recipe = 0
 
-    for recipe_url in recipes_URL:
-       
-        status, recipe_tree = get_tree(recipe_url)
+    for recipe_url in recipe_links:
+        
+        status, recipe_tree = get_tree(recipe_url[0])
         recipe_dict = { }
         if status:
             recipe_dict["name"] =re.sub(r'\s+',' '," ".join(recipe_tree.xpath(_XPATH_RECIPE_NAME)).strip())
@@ -51,7 +90,10 @@ def run_scapper(num_of_recipies=10):
 
             recipe_dict["instructions"] = instructions
             recipe_dict["url_img"] = re.sub(r'\s+',' '," ".join(recipe_tree.xpath(_XPATH_RECIPE_IMAGE)))
-            recipe_dict["description"] = f"Que delicia no se te antoja preparar {recipe_dict['name']}"
+            recipe_dict["description"] = f"Que delicia no se te antoja preparar  {recipe_dict['name']}"
+            recipe_dict["price"] = str(round(random.uniform(1.5 , 20), 2))
+
+            recipe_dict["category"] = recipe_url[1]
  
         if  recipe_dict:
             id_recipe += 1
