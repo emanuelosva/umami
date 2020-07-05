@@ -19,7 +19,7 @@ import Desayuno from './components/Desayuno'
 import Almuerzos from './components/Almuerzos'
 import Comida from './components/comida'
 
-function App() {
+const App =() => {
   return (   
 
     <BrowserRouter> 
