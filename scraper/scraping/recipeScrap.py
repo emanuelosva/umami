@@ -15,7 +15,7 @@ _XPATH_RECIPE_IMAGE = '//div[@class = "image"]/img/@data-src'
 
 import random
 import re 
-from .scrap_fun import get_links, create_url, get_tree 
+from .scrap_fun import get_links, create_url, get_tree
 
 def run_scapper(num_of_recipies=10):
     #categories_link = get_links(_URL_RECETAS, _XPATH_LINKS_CATEGORY_RECIPES)
