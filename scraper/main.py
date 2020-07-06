@@ -9,9 +9,10 @@ scraping = recipeScrap.run_scapper(num_of_recipies=2)
 
 @app.route('/')
 def index():
-
+    recipes_exists = consult_recipes()
     for key, value in scraping.items():
         recipe = value
-        insert_recipe(recipe)
+        if recipe['name'] not in recipes_exists:
+            insert_recipe(recipe)
         
     return "Ok"
