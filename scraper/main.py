@@ -1,7 +1,7 @@
 """Entry Point for Scrappin-Flask Api"""
 from scraping import recipeScrap
 from app import create_app
-from app.mongo_db import insert_recipe
+from app.mongo_db import insert_recipe, consult_recipes
 
 
 app=create_app()
