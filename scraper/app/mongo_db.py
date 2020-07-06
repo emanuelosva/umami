@@ -15,5 +15,13 @@ mongo = PyMongo(app)
 def insert_recipe(recipe):
     recipe_collection = mongo.db.recipes
     recipe_collection.insert_one(recipe)
-    return "Recipe add with success" 
+    return "Recipe add with success"
+
+
+def consult_recipes():
+    recipes_names = []
+    recipes_in_database = mongo.db.recipes.find()
+    for recipe in recipes_in_database:
+        recipes_names.append(recipe['name'])
+    return  recipes_names
 
