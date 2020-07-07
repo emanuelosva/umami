@@ -14,9 +14,9 @@ const router = express();
 
 // Admin router
 router.get('/', listAdmin);
-router.post('/', addAdmin);
-router.put('/:id', updateAdmin);
-router.delete('/:id', removeAdmin);
+// router.post('/', addAdmin);
+// router.put('/:id', updateAdmin);
+// router.delete('/:id', removeAdmin);
 
 // Callbacks
 function listAdmin(req, res, next) {
