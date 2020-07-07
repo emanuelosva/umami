@@ -8,12 +8,10 @@ html(lang="en")
     script(defer src='https://use.fontawesome.com/releases/v5.3.1/js/all.js')
 
     title Api - Admin
-  body(style="display: flex; min-height:100vh; flex-direction: column")
 
+  body.d-flex.flex-column.min-vh-100(style="position: relative")
     include navbar.pug
-
     block content
-
     include footer.pug
 
     script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js" )
