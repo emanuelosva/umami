@@ -8,6 +8,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const helmet = require('helmet');
 
 const recipeNetwork = require('./components/recipe/network');
 const userNetwork = require('./components/user/network');
@@ -29,6 +30,7 @@ db(config.db.dbUri);
 const app = express();
 
 // App extensiones
+app.use(helmet());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
