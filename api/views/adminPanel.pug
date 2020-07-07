@@ -29,7 +29,7 @@ block content
                       img(src=item.url_img, alt=entitie.name class="card-img-top")
                       .card-body
                         h5.card-title= item.name
-                        a(href=`/admin?recipe=${item._id}` class="btn btn-info") Edición
+                        a(href=`/admin/recipes/${item._id}` class="btn btn-info") Edición
                   else
                     .card.mb-3
                       .card-body
