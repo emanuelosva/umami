@@ -11,7 +11,7 @@
 		 
 		 - ["servings"] : string  like  "4.00"
 		 
-		 - ["time"] : string   "45min"
+		 - ["time"] : string like  "45min"
 		 
 		 - ["ingredients"] : List of strings like   [ "1 pollo " , "2 quesos  " , " 1 cucharada de sal"]
 		 
