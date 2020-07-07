@@ -1,0 +1,450 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "An API rest service for get info for Umami website",
+    "version": "1.0.0",
+    "title": "Umami API"
+  },
+  "host": "umami-api.emanuelosva.vercel.app",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "user",
+      "description": "Operations about user"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/recipe": {
+      "get": {
+        "tags": [
+          "recipe"
+        ],
+        "summary": "List all recipes",
+        "description": "List all recipes at DB",
+        "operationId": "listRecipes",
+        "parameters": [
+          {
+            "name": "tag",
+            "in": "query",
+            "type": "string",
+            "description": "recipe tag",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recipe List"
+          },
+          "404": {
+            "description": "Tag not found"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "recipe"
+        ],
+        "summary": "Create a recipe",
+        "description": "Create a new recipe",
+        "operationId": "createRecipes",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Recipe"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful create operation"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/recipe/{id}": {
+      "get": {
+        "tags": [
+          "recipe"
+        ],
+        "summary": "Get a recipe by Id",
+        "description": "List all recipes with the specified tag",
+        "operationId": "listRecipesBy Tag",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "description": "recipe Id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A unique recipe"
+          },
+          "404": {
+            "description": "Id not found"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "recipe"
+        ],
+        "summary": "Update a recipe by Id",
+        "description": "Update a recipe with the specified Id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "description": "recipe Id",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Recipe schema",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Recipe"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful update operation"
+          },
+          "404": {
+            "description": "Id not found"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "recipe"
+        ],
+        "summary": "Delete a recipe by Id",
+        "description": "Delete a recipe with the specified Id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "description": "recipe Id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful delete operation"
+          },
+          "404": {
+            "description": "Id not found"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "List all users or an user by id",
+        "description": "List all users or an user by id",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "user",
+            "description": "User id",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List Users"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Create user",
+        "description": "Add new user to db",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/user/{id}": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Update user",
+        "description": "Update a user in the app",
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful update opertion"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Remove a user by id",
+        "description": "Remove a specific user from db",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "description": "user id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful delete opertion"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Return json web token",
+        "description": "Return a json web token if is authenticated",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Invalid data"
+          }
+        }
+      }
+    },
+    "/shop": {
+      "get": {
+        "tags": [
+          "shop"
+        ],
+        "summary": "List all shops",
+        "description": "List all hsops or a shop by id",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "shop",
+            "description": "Shop id",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List shops"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "shop"
+        ],
+        "summary": "Create a shop",
+        "description": "Create a new shop",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Shop objecy",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Shop"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful create operation"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Recipe": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "servings": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string"
+        },
+        "ingredients": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "instructions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "usr_image": {
+          "type": "string"
+        },
+        "url_ingredient": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "shops": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of shops"
+        }
+      }
+    },
+    "Shop": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string",
+          "description": "user email"
+        },
+        "recipe": {
+          "type": "string",
+          "description": "recipe Id"
+        },
+        "cost": {
+          "type": "number"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

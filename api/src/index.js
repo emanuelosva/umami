@@ -12,9 +12,11 @@ const cors = require('cors');
 const recipeNetwork = require('./components/recipe/network');
 const userNetwork = require('./components/user/network');
 const shopNetwork = require('./components/shop/network');
+const swaggerUi = require('swagger-ui-express');
 // const adminNetwork = require('./components/admin/network');
 // const adminPanel = require('./components/admin/panel');
 
+const swaggerDoc = require('../swagger.json');
 const errors = require('./network/errors');
 const db = require('./db');
 const config = require('../config');
@@ -39,6 +41,7 @@ app.get('/', (req, res, next) => {
 app.use('/api/recipe', recipeNetwork);
 app.use('/api/user', userNetwork);
 app.use('/api/shop', shopNetwork);
+app.use('/api/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 // app.use('/api/admin', adminNetwork);
 // app.use('/api/admin/panel', adminPanel);
 app.use(errors);
