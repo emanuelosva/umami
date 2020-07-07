@@ -2,7 +2,41 @@ extends layout.pug
 
 block content
   .container
-    .row
-      .col
-        p Data
-        h1.title= data
+    .text-center.mt-3
+      h1 Admin Panel Administartion
+      p Administra, organiza y crea nueva recursos
+    
+    span.badge.badge-secondary.mt-5.mb-3.p-2
+        h3 Edita tus recusros
+    br
+    each entitie in [entities[0], entities[3]]
+      a.btn.btn-info.mr-1.mb-3(data-toggle="collapse" href=`#${entitie.name}` role="button" aria-expanded="false" aria-controls=`#${entitie.name}`)
+        h5= entitie.name
+    each entitie in [entities[0], entities[3]]
+      .collapse(id=`${entitie.name}`)
+        .card
+          .card-header
+            p= `Entitite: ${entitie.name} - Items: 2`
+              span
+                if entitie.name === 'Admins'
+                  a.ml-2(href=`/admin/create-new` class="btn btn-primary") Add
+          .card-body
+            .row
+              each item in entitie.items
+                .col-12.col-md-4
+                  if entitie.name === 'Recipes'
+                    .card.mb-3(style="")
+                      img(src=item.url_img, alt=entitie.name class="card-img-top")
+                      .card-body
+                        h5.card-title= item.name
+                        a(href=`/admin?recipe=${item._id}` class="btn btn-info") Edición
+                  else
+                    .card.mb-3
+                      .card-body
+                        h5.card-title= item.user
+                        a(href=`/admin/${item._id}` class="btn btn-info") Edición
+
+    br
+    span.badge.badge-secondary.mt-5.mb-3.p-2
+        h3 Métricas
+    

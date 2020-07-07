@@ -13,12 +13,12 @@ const controller = require('./controller');
 const router = express();
 
 // Admin router
-router.get('/', adminPanel)
+router.get('/', adminPanel);
 
 // Callbacks
 async function adminPanel(req, res, next) {
-  const data = await controller.getData();
-  res.render('adminPanel', { data });
+  const entities = await controller.getData();
+  res.render('adminPanel', { entities });
 };
 
 module.exports = router;

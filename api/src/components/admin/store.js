@@ -9,6 +9,15 @@
 const storeManage = require('../../store');
 const Model = require('./model');
 
-const Store = new storeManage(Model);
+const recipeStore = require('../recipe/store');
+const userStore = require('../user/store');
+const shopStore = require('../shop/store');
 
-module.exports = Store;
+const adminStore = new storeManage(Model);
+
+module.exports = {
+  adminStore,
+  recipeStore,
+  userStore,
+  shopStore,
+};
