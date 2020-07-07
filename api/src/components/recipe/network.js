@@ -14,17 +14,26 @@ const router = express();
 
 // Recipes router
 router.get('/', listRecipe);
+router.get('/:id', getRecipe);
 router.post('/', addRecipe);
 router.put('/:id', updateRecipe);
 router.delete('/:id', removeRecipe);
 
 // Callbacks
 function listRecipe(req, res, next) {
-  const filterRecipe = req.query.recipe || null;
+  const filterRecipe = req.query.category || null;
 
   controller.list(filterRecipe)
     .then(list => {
       response.success(req, res, list, 200);
+    })
+    .catch(next);
+};
+
+function getRecipe(req, res, next) {
+  controller.get(req.params.id)
+    .then(recipe => {
+      response.success(req, res, recipe, 200);
     })
     .catch(next);
 };
