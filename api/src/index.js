@@ -43,7 +43,10 @@ app.get('/', (req, res, next) => {
 app.use('/api/recipe', recipeNetwork);
 app.use('/api/user', userNetwork);
 app.use('/api/shop', shopNetwork);
-app.use('/api/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+app.use('/api/documentation', swaggerUi.serve);
+app.get('/api/documentation', swaggerUi.setup(swaggerDoc, {
+  customCssUrl: 'https://cdn.jsdelivr.net/npm/swagger-ui-themes@3.0.0/themes/3.x/theme-newspaper.css',
+}));
 // app.use('/api/admin', adminNetwork);
 // app.use('/api/admin/panel', adminPanel);
 app.use(errors);
