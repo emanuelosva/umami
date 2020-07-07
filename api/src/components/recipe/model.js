@@ -13,7 +13,7 @@ const recipeSchema = new Schema({
     type: String,
     required: true,
   },
-  tag: {
+  category: {
     type: String,
     required: true,
   },
@@ -38,6 +38,10 @@ const recipeSchema = new Schema({
     required: true,
   },
   url_img: {
+    type: String,
+    required: true,
+  },
+  url_ingredient: {
     type: String,
     required: true,
   },
