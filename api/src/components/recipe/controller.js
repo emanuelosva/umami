@@ -9,12 +9,18 @@
 const store = require('./store');
 
 const list = async (filter) => {
-  let recipe;
+  let recipes
   filter
-    ? recipe = await store.get(filter)
-    : recipe = await store.list()
+    ? recipes = await store.filter({ category: filter })
+    : recipes = await store.list();
 
-  return recipe;
+  return recipes;
+};
+
+const get = async (id) => {
+  if (!id) return Promise.reject('Invalid data');
+
+  return await store.get(id);
 };
 
 const add = async (body) => {
@@ -72,6 +78,7 @@ const remove = (id) => {
 
 module.exports = {
   list,
+  get,
   add,
   update,
   remove,
