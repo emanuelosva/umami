@@ -8,6 +8,7 @@
 
 const auth = require('../../auth');
 const store = require('./store');
+const recipeController = require('../recipe/controller');
 
 const getData = async () => {
   // Get shops
@@ -36,6 +37,23 @@ const getData = async () => {
   ];
 }
 
+const getRecipe = async (id) => {
+  let error;
+  let recipe;
+
+  !id
+    ? error = 'Problemas al cargar la receta'
+    : recipe = await store.recipeStore.get(id)
+
+  return { recipe, error };
+};
+
+const editRecipe = async (id, body) => {
+  return await recipeController.update(id, body);
+}
+
 module.exports = {
   getData,
+  getRecipe,
+  editRecipe,
 };

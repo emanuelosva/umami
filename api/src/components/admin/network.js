@@ -14,11 +14,34 @@ const router = express();
 
 // Admin router
 router.get('/', adminPanel);
+router.get('/recipes/:id', editRecipeView);
+router.post('/recipes/:id', editRecipe)
 
 // Callbacks
 async function adminPanel(req, res, next) {
   const entities = await controller.getData();
+
   res.render('adminPanel', { entities });
+};
+
+async function editRecipeView(req, res, next) {
+  const data = await controller.getRecipe(req.params.id);
+
+  res.render('editRecipe', {
+    recipe: data.recipe,
+    error: data.error,
+  });
+};
+
+async function editRecipe(req, res, next) {
+  const result = await controller.editRecipe(req.params.id, { ...req.body });
+
+  result
+    ? res.redirect('/admin')
+    : res.render('editRecipe', {
+      recipe: data.recipe,
+      error: 'Problemas al actualizar',
+    });
 };
 
 module.exports = router;
