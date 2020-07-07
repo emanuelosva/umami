@@ -1,10 +1,10 @@
-/**
- * @fileoverview Admin panel building.
- *
- * @version 1.0
- * @author Emanuel Osorio <emanuelosva@gmail.com>
- *
-*/
+// /**
+//  * @fileoverview Admin panel building.
+//  *
+//  * @version 1.0
+//  * @author Emanuel Osorio <emanuelosva@gmail.com>
+//  *
+// */
 
 // const AdminBro = require('admin-bro');
 // const AdminBroExpress = require('admin-bro-expressjs');
@@ -20,4 +20,7 @@
 
 // const router = AdminBroExpress.buildRouter(adminBro);
 
-// module.exports = router;
+// module.exports = {
+//   adminBro,
+//   router,
+// };

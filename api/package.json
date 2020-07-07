@@ -2,10 +2,10 @@
   "name": "api",
   "version": "1.0.0",
   "description": "Api for Umami web app",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon --ext js,pug src/index.js"
   },
   "keywords": [
     "node",
@@ -16,19 +16,17 @@
   "author": "Emanuel Osorio",
   "license": "MIT",
   "dependencies": {
-    "admin-bro": "^2.4.3",
-    "admin-bro-expressjs": "^2.1.0",
-    "admin-bro-mongoose": "^0.5.2",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-formidable": "^1.2.0",
+    "express-session": "^1.17.1",
     "helmet": "^3.23.3",
     "mongoose": "^5.9.19",
     "nanoid": "^3.1.10",
     "nodemon": "^2.0.4",
+    "pug": "^3.0.0",
     "swagger-ui-express": "^4.1.4"
   }
 }
