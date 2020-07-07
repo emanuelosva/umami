@@ -27,10 +27,10 @@
         "operationId": "listRecipes",
         "parameters": [
           {
-            "name": "tag",
+            "name": "category",
             "in": "query",
             "type": "string",
-            "description": "recipe tag",
+            "description": "recipe category",
             "required": false
           }
         ],
