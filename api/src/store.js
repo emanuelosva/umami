@@ -56,7 +56,7 @@ class Store {
     try {
       const entity = await this.Model.findById(id);
 
-      keys = Object.keys(data);
+      const keys = Object.keys(data);
       keys.forEach(item => {
         entity[item] = data[item];
       });
