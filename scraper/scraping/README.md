@@ -23,6 +23,6 @@
 		 
 		 - ["price"] :  String  a random value from 1.5 to 20 dollars  like "15.22"
 		 
-		 - ["category"] : A  String value in the categories: "Pastas", "Sopas y Cremas", "Granos", "Vegetariana", "Carnes" and "Postres"
+		 - ["category"] : A  String value in the categories: "Pastas", "Sopas y Cremas", "Granos", "Vegetariana", "Carnes" or "Postres"
 		 
 		 - ["url_ingredient"] :  A String  with URL  to get the image of ingedients
