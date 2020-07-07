@@ -25,7 +25,7 @@ const get = async (id) => {
 
 const add = async (body) => {
   let incompletData = (
-    !body.name || !body.tag || !body.servings || !body.time || !body.ingredients
+    !body.name || !body.category || !body.servings || !body.time || !body.ingredients
     || !body.instructions || !body.description || !body.url_img
   );
 
@@ -35,13 +35,14 @@ const add = async (body) => {
 
   let recipe = {
     name: body.name,
-    tag: body.tag,
+    category: body.category,
     servings: body.servings,
     time: body.time,
     ingredients: body.ingredients,
     instructions: body.instructions,
     description: body.description,
     url_img: body.url_img,
+    url_ingredient: body.url_ingredient,
     date: new Date(),
   };
 
@@ -56,13 +57,15 @@ const update = (id, body) => {
 
   let recipe = {
     name: body.name,
-    tag: body.tag,
+    category: body.category,
     servings: body.servings,
     time: body.time,
     ingredients: body.ingredients,
     instructions: body.instructions,
     description: body.description,
     url_img: body.url_img,
+    url_ingredient: body.url_ingredient,
+    date: new Date(),
   };
 
   return store.update(id, recipe)
