@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Static Files
-app.use('static', express.static(join(__dirname, '..', 'public')));
+app.use('/static', express.static(join(__dirname, '..', 'public')));
 
 // Template engine
 app.set('view', join(__dirname, '..', 'views'));
