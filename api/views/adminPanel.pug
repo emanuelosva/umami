@@ -17,9 +17,10 @@ block content
         .card
           .card-header
             p= `Entitite: ${entitie.name} - Items: 2`
-              span
                 if entitie.name === 'Admins'
-                  a.ml-2(href=`/admin/create-new` class="btn btn-primary") Add
+                  a.ml-3(href=`/admin/add-admin` class="btn btn-primary") Add
+                else
+                  a.ml-3(href=`/admin/add-recipe` class="btn btn-primary") Add
           .card-body
             .row
               each item in entitie.items
