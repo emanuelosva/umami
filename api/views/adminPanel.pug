@@ -24,12 +24,15 @@ block content
             .row
               each item in entitie.items
                 .col-12.col-md-4
+                  //- Recipe rendering
                   if entitie.name === 'Recipes'
                     .card.mb-3(style="")
                       img(src=item.url_img, alt=entitie.name class="card-img-top")
                       .card-body
                         h5.card-title= item.name
                         a(href=`/admin/recipes/${item._id}` class="btn btn-info") Edición
+                        button.btn.btn-danger.ml-2(type="button" data-toggle="confirmation") Eliminar
+                  //- Admins rendering
                   else
                     .card.mb-3
                       .card-body
