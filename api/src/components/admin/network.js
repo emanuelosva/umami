@@ -22,9 +22,9 @@ router.post('/recipes/:id', editRecipe)
 
 // Callbacks
 async function adminPanel(req, res, next) {
-  const entities = await controller.getData();
+  const { entities, metrics } = await controller.getData();
 
-  res.render('adminPanel', { entities });
+  res.render('adminPanel', { entities, metrics });
 };
 
 async function addRecipeView(req, res, nex) {

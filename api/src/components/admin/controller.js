@@ -9,9 +9,10 @@
 const auth = require('../../auth');
 const store = require('./store');
 const recipeController = require('../recipe/controller');
+const { count } = require('./model');
 
 const getData = async () => {
-  // Get shops
+  // Get Principale data
   const recipes = {
     name: 'Recipes',
     items: await store.recipeStore.list(),
@@ -29,12 +30,23 @@ const getData = async () => {
     items: await store.adminStore.list(),
   };
 
-  return [
+  const entities = [
     recipes,
     shops,
     users,
     admins,
-  ];
+  ]
+
+  // Simple Metric (Number of elements)
+  const metrics = {};
+  entities.forEach(item => {
+    metrics[item.name] = item.items.length;
+  });
+
+  return {
+    entities: entities,
+    metrics: metrics,
+  }
 }
 
 const getRecipe = async (id) => {
