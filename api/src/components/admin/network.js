@@ -14,6 +14,8 @@ const router = express();
 
 // Admin router
 router.get('/', adminPanel);
+router.get('/recipes/new', addRecipeView);
+router.post('/recipes/new', addRecipe);
 router.get('/recipes/:id', editRecipeView);
 router.post('/recipes/:id', editRecipe)
 
@@ -22,6 +24,20 @@ async function adminPanel(req, res, next) {
   const entities = await controller.getData();
 
   res.render('adminPanel', { entities });
+};
+
+async function addRecipeView(req, res, nex) {
+  res.render('addRecipe', { error: null });
+};
+
+async function addRecipe(req, res, next) {
+  const result = await controller.addRecipe({ ...req.body });
+
+  result
+    ? res.redirect('/admin')
+    : res.render('addRecipe', {
+      error: 'Completa todos los campos requeridos',
+    });
 };
 
 async function editRecipeView(req, res, next) {

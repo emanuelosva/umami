@@ -48,6 +48,10 @@ const getRecipe = async (id) => {
   return { recipe, error };
 };
 
+const addRecipe = async (body) => {
+  return await recipeController.add(body);
+};
+
 const editRecipe = async (id, body) => {
   return await recipeController.update(id, body);
 }
@@ -55,5 +59,6 @@ const editRecipe = async (id, body) => {
 module.exports = {
   getData,
   getRecipe,
+  addRecipe,
   editRecipe,
 };
