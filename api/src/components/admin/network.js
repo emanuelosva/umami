@@ -15,8 +15,9 @@ const router = express();
 // Admin router
 router.get('/', adminPanel);
 router.get('/recipes/new', addRecipeView);
-router.post('/recipes/new', addRecipe);
 router.get('/recipes/:id', editRecipeView);
+router.get('/recipes/delete/:id', deleteRecipe)
+router.post('/recipes/new', addRecipe);
 router.post('/recipes/:id', editRecipe)
 
 // Callbacks
@@ -47,6 +48,14 @@ async function editRecipeView(req, res, next) {
     recipe: data.recipe,
     error: data.error,
   });
+};
+
+async function deleteRecipe(req, res, next) {
+  const result = await controller.deleteRecipe(req.params.id);
+
+  result
+    ? res.redirect('/admin')
+    : res.render('adminPanel', { erro: 'Problemas al borrar' })
 };
 
 async function editRecipe(req, res, next) {

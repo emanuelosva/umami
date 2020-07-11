@@ -56,9 +56,14 @@ const editRecipe = async (id, body) => {
   return await recipeController.update(id, body);
 }
 
+const deleteRecipe = async (id) => {
+  return await recipeController.remove(id);
+};
+
 module.exports = {
   getData,
   getRecipe,
   addRecipe,
   editRecipe,
+  deleteRecipe,
 };
