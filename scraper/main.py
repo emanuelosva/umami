@@ -5,7 +5,7 @@ from app.mongo_db import insert_recipe, consult_recipes
 
 
 app=create_app()
-scraping = recipeScrap.run_scapper(num_of_recipies=2)
+scraping = recipeScrap.run_scapper(num_of_recipies=20)
 
 @app.route('/')
 def index():
