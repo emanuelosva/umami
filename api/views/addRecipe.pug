@@ -1,0 +1,65 @@
+extends layout.pug
+
+block content
+  .container
+    h2.m-3.text-center Editor de recetas
+    if error
+      .alert-alert-danger(role="alert")
+        p= error
+    else
+      .container.text-center
+        .card.mb-5
+          h5.card-header.info-color.white-text.text-center.py-4
+            strong Nueva Receta
+          .card-body
+            form(action=`/admin/recipes/new` method="POST")
+              .form-group.text-left
+                label(for="name") 
+                  span.badge.bagde-pill.badge-primary Nombre
+                input.mb-2(type="text" class="form-control" id="name" name="name" editable)
+                
+                label(for="category") 
+                  span.badge.bagde-pill.badge-primary Categoria
+                input.mb-2(type="text" class="form-control" id="category" name="category" editable)
+                
+                label(for="servings") 
+                  span.badge.bagde-pill.badge-primary Porciones
+                input.mb-2(type="text" class="form-control" id="servings" name="servings" editable)
+
+                label(for="time") 
+                  span.badge.bagde-pill.badge-primary Tiempo
+                input.mb-2(type="text" class="form-control" id="time" name="time" editable)
+
+                label(for="ingredients") 
+                  span.badge.bagde-pill.badge-primary Ingredientes
+                  button.badge.badge-secondary.ml-3(type="button" onclick="addInput('ingredients')")
+                    i.fa.fa-plus-circle(aria-hidden="true")
+                .container.p-1(id="ingredients")
+                    input.mb-2(type="text" class="form-control" name=`ingredients` editable)
+
+                label(for="instructions") 
+                  span.badge.bagde-pill.badge-primary Instrucciones
+                  button.badge.badge-secondary.ml-3(type="button" onclick="addInput('instructions')")
+                    i.fa.fa-plus-circle(aria-hidden="true")
+                .container.p-1(id="instructions")
+                    input.mb-2(type="text" class="form-control" name=`instructions` editable)
+                    
+
+                label(for="description") 
+                  span.badge.bagde-pill.badge-primary Descripción
+                input.mb-2(type="text" class="form-control" id="description" name="description" editable)
+
+                label(for="url_img") 
+                  span.badge.bagde-pill.badge-primary Url a Imagen
+                input.mb-2(type="url" class="form-control" id="url_img" name="url_img" editable)
+
+                label(for="url_ingredient") 
+                  span.badge.bagde-pill.badge-primary Url a Tipo de ingrediente
+                input.mb-2(type="url" class="form-control" id="url_ingredient" name="url_ingredient" editable)
+
+                button.btn.btn-primary.w-100.mt-2(type="submit") 
+                  strong Crear!
+                
+                .text-right.mt-2.mr-2
+                  a(href="/admin") 
+                    strong Vulve al Panel
