@@ -48,4 +48,16 @@ block content
     br
     span.badge.badge-secondary.mt-5.mb-3.p-2
         h3 Métricas
-    
+    br
+    .row.mb-5
+      each metric in metrics
+        .col-12.col-md-6
+          .card.mb-3
+            .card-body
+              h4= metric.name
+              p Esto es lo que hay en tu inventario:
+              span.d-flex
+                i(class="fa fa-square mr-3" aria-hidden="true")
+                h5= `Hasta ahora: ${metric.count}`
+            .card-footer
+              p= `Ultima actualización a las ${new Date().getHours()} : ${new Date().getMinutes()}`
