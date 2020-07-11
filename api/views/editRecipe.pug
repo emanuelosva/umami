@@ -32,15 +32,20 @@ block content
 
                 label(for="ingredients") 
                   span.badge.bagde-pill.badge-primary Ingredients
-                .constainer
+                  button.badge.badge-secondary.ml-3(type="button" onclick="addInput('ingredients')")
+                    i.fa.fa-plus-circle(aria-hidden="true")
+                .container.p-1(id="ingredients")
                   each ingredient in recipe.ingredients
                     input.mb-2(type="text" class="form-control" name=`ingredients` editable value=ingredient)
 
                 label(for="instructions") 
                   span.badge.bagde-pill.badge-primary Instructciones
-                .constainer
+                  button.badge.badge-secondary.ml-3(type="button" onclick="addInput('instructions')")
+                    i.fa.fa-plus-circle(aria-hidden="true")
+                .container.p-1(id="instructions")
                   each instruction in recipe.instructions
                     input.mb-2(type="text" class="form-control" name=`instructions` editable value=instruction)
+                    
 
                 label(for="description") 
                   span.badge.bagde-pill.badge-primary Descrición
