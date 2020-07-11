@@ -15,23 +15,23 @@ block content
             form(action=`/admin/recipes/${recipe._id}` method="POST")
               .form-group.text-left
                 label(for="name") 
-                  span.badge.bagde-pill.badge-primary Name
+                  span.badge.bagde-pill.badge-primary Nombre
                 input.mb-2(type="text" class="form-control" id="name" name="name" editable value=recipe.name)
                 
                 label(for="category") 
-                  span.badge.bagde-pill.badge-primary Category
+                  span.badge.bagde-pill.badge-primary Categoría
                 input.mb-2(type="text" class="form-control" id="category" name="category" editable value=recipe.category)
                 
                 label(for="servings") 
-                  span.badge.bagde-pill.badge-primary Servings
+                  span.badge.bagde-pill.badge-primary Porciones
                 input.mb-2(type="text" class="form-control" id="servings" name="servings" editable value=recipe.servings)
 
                 label(for="time") 
-                  span.badge.bagde-pill.badge-primary Time
+                  span.badge.bagde-pill.badge-primary Tiempo
                 input.mb-2(type="text" class="form-control" id="time" name="time" editable value=recipe.time)
 
                 label(for="ingredients") 
-                  span.badge.bagde-pill.badge-primary Ingredients
+                  span.badge.bagde-pill.badge-primary Ingredientes
                   button.badge.badge-secondary.ml-3(type="button" onclick="addInput('ingredients')")
                     i.fa.fa-plus-circle(aria-hidden="true")
                 .container.p-1(id="ingredients")
@@ -39,7 +39,7 @@ block content
                     input.mb-2(type="text" class="form-control" name=`ingredients` editable value=ingredient)
 
                 label(for="instructions") 
-                  span.badge.bagde-pill.badge-primary Instructciones
+                  span.badge.bagde-pill.badge-primary Instrucciones
                   button.badge.badge-secondary.ml-3(type="button" onclick="addInput('instructions')")
                     i.fa.fa-plus-circle(aria-hidden="true")
                 .container.p-1(id="instructions")
@@ -48,7 +48,7 @@ block content
                     
 
                 label(for="description") 
-                  span.badge.bagde-pill.badge-primary Descrición
+                  span.badge.bagde-pill.badge-primary Descripción
                 input.mb-2(type="text" class="form-control" id="description" name="description" editable value=recipe.description)
 
                 label(for="url_img") 

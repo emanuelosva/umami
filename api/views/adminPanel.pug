@@ -18,9 +18,9 @@ block content
           .card-header
             p= `Entitite: ${entitie.name} - Items: 2`
                 if entitie.name === 'Admins'
-                  a.ml-3(href=`/admin/add-admin` class="btn btn-primary") Add
+                  a.ml-3(href=`/admin/new` class="btn btn-primary") Add
                 else
-                  a.ml-3(href=`/admin/add-recipe` class="btn btn-primary") Add
+                  a.ml-3(href=`/admin/recipes/new` class="btn btn-primary") Add
           .card-body
             .row
               each item in entitie.items
