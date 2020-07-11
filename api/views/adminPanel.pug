@@ -32,7 +32,12 @@ block content
                       .card-body
                         h5.card-title= item.name
                         a(href=`/admin/recipes/${item._id}` class="btn btn-info") Edición
-                        a.btn.btn-danger.ml-2(href=`/admin/recipes/delete/${item._id}`) Eliminar
+                        a.btn.btn-danger.ml-2(
+                          data-toggle="confirmation" 
+                          data-title="Estás seguro?"
+                          href=`/admin/recipes/delete/${item._id}`
+                          )
+                            i.fa.fa-trash(aria-hidden="true")
                   //- Admins rendering
                   else
                     .card.mb-3

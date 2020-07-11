@@ -37,3 +37,12 @@ const addInput = (groupName) => {
   }
 };
 
+// Delete confirmation
+$('[data-toggle=confirmation]').confirmation({
+  rootSelector: '[data-toggle=confirmation]',
+  singleton: true,
+  btnOkLabel: 'Elimar',
+  btnOkClass: 'btn btn-sm btn-danger',
+  btnCancelLabel: 'Cancel',
+
+});
