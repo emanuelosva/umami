@@ -38,9 +38,12 @@ const getData = async () => {
   ]
 
   // Simple Metric (Number of elements)
-  const metrics = {};
+  const metrics = [];
   entities.forEach(item => {
-    metrics[item.name] = item.items.length;
+    metrics.push({
+      name: item.name,
+      count: item.items.length,
+    });
   });
 
   return {
