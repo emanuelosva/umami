@@ -16,11 +16,12 @@ block content
       .collapse(id=`${entitie.name}`)
         .card
           .card-header
-            p= `Entitite: ${entitie.name} - Items: 2`
-                if entitie.name === 'Admins'
-                  a.ml-3(href=`/admin/new` class="btn btn-primary") Add
-                else
-                  a.ml-3(href=`/admin/recipes/new` class="btn btn-primary") Add
+            if entitie.name === 'Admins'
+              p= `Entitite: ${entitie.name} - Items: ${metrics[3].count}`
+              a.ml-3(href=`/admin/new` class="btn btn-primary") Add
+            else
+              p= `Entitite: ${entitie.name} - Items: ${metrics[0].count}`
+              a.ml-3(href=`/admin/recipes/new` class="btn btn-primary") Add
           .card-body
             .row
               each item in entitie.items
