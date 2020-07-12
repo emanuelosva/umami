@@ -18,9 +18,9 @@ class Template extends React.Component {
     render() {    
         return(
 
-            <Container>
-                <div className = "barra-superior">
-                    <Navbar bg="light" expand="lg">
+           
+                <div className = "barra-superior ">
+                    {/* <Navbar bg="light" expand="lg">
                         <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
@@ -42,10 +42,13 @@ class Template extends React.Component {
                             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                             <Button variant="outline-primary">Search</Button>
                             </Form>
-                    </Navbar>
-                    {this.props.children}
+                    </Navbar> */}
+                    
+                         {this.props.children}
+                    
+                   
                 </div>
-            </Container>
+           
         )
 }
 }

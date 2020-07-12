@@ -18,6 +18,7 @@ import inicio from './components/inicio'
 import Desayuno from './components/Desayuno'
 import Almuerzos from './components/Almuerzos'
 import Comida from './components/comida'
+import ComoPreparar from './components/ComoPreparar'
 
 const App =() => {
   return (   
@@ -30,6 +31,7 @@ const App =() => {
            <Route exact path ="/desayuno" component = {Desayuno}/>
            <Route exact path ="/Almuerzos" component = {Almuerzos}/>
            <Route exact path ="/Comida" component = {Comida}/>
+           <Route exact path ="/comoSePrepara/:key" component = {ComoPreparar}/>
         </Switch>              
 
       </Template>
