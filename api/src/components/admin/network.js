@@ -17,14 +17,32 @@ router.get('/', adminPanel);
 router.get('/recipes/new', addRecipeView);
 router.get('/recipes/:id', editRecipeView);
 router.get('/recipes/delete/:id', deleteRecipe)
+router.get('/new', addAdminView);
+router.post('/new', addAdmin);
 router.post('/recipes/new', addRecipe);
 router.post('/recipes/:id', editRecipe)
 
-// Callbacks
+// --- Callbacks ---
+
+// For admin
 async function adminPanel(req, res, next) {
   const { entities, metrics } = await controller.getData();
 
   res.render('adminPanel', { entities, metrics });
+};
+
+async function addAdminView(req, res, next) {
+  res.render('addAdmin', { error: null });
+};
+
+async function addAdmin(req, res, next) {
+  const result = await controller.addAdmin({ ...req.body });
+
+  result
+    ? res.redirect('/admin')
+    : res.render('addRecipe', {
+      error: 'Error al crear nuevo Admin'
+    });
 };
 
 async function addRecipeView(req, res, nex) {

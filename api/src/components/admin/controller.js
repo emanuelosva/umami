@@ -9,7 +9,6 @@
 const auth = require('../../auth');
 const store = require('./store');
 const recipeController = require('../recipe/controller');
-const { count } = require('./model');
 
 const getData = async () => {
   // Get Principale data
@@ -75,10 +74,25 @@ const deleteRecipe = async (id) => {
   return await recipeController.remove(id);
 };
 
+const addAdmin = async (body) => {
+  if (!body.user || !body.password) {
+    return Promise.reject('Invalid data');
+  }
+
+  const admin = {
+    user: body.user,
+    password: await auth.hash(body.password),
+  };
+
+  const newAdmin = await store.adminStore.add(admin);
+  return newAdmin;
+};
+
 module.exports = {
   getData,
   getRecipe,
   addRecipe,
   editRecipe,
   deleteRecipe,
+  addAdmin,
 };
