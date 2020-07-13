@@ -39,11 +39,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/static', express.static(join(__dirname, '..', 'public')));
 
 // Template engine
-app.set('view', join(__dirname, '..', 'views'));
+app.set('views', join(__dirname, '..', 'views'));
 app.set('view engine', 'pug');
 
 // Router
-
+app.get('/', (req, res) => res.render('index'));
 app.use('/admin', adminNetwork);
 app.use('/api/recipe', recipeNetwork);
 app.use('/api/user', userNetwork);
