@@ -7,20 +7,35 @@
 */
 
 const express = require('express');
-const response = require('../../network/response');
+const cockieSession = require('cookie-session');
+const config = require('../../../config');
 const controller = require('./controller');
+const { basicAuth } = require('../../auth');
 
 const router = express();
 
+//Router auth configuration
+router.set('trust proxy', 1)
+router.use(cockieSession({
+  name: 'session',
+  secret: config.auth.sessionSecret,
+  maxAge: 1000 * 60 * 60,
+  path: '/admin',
+  secure: process.env.NODE_ENV === 'production',
+}));
+
 // Admin router
-router.get('/', adminPanel);
-router.get('/recipes/new', addRecipeView);
-router.get('/recipes/:id', editRecipeView);
-router.get('/recipes/delete/:id', deleteRecipe)
-router.get('/new', addAdminView);
-router.post('/new', addAdmin);
-router.post('/recipes/new', addRecipe);
-router.post('/recipes/:id', editRecipe)
+router.get('/', basicAuth, adminPanel);
+router.get('/recipes/new', basicAuth, addRecipeView);
+router.get('/recipes/:id', basicAuth, editRecipeView);
+router.get('/recipes/delete/:id', basicAuth, deleteRecipe);
+router.get('/new', basicAuth, addAdminView);
+router.get('/login', loginView);
+router.post('/new', basicAuth, addAdmin);
+router.post('/recipes/new', basicAuth, addRecipe);
+router.post('/recipes/:id', basicAuth, editRecipe);
+router.post('/login', login);
+router.get('/logout', basicAuth, logout);
 
 // --- Callbacks ---
 
@@ -28,7 +43,11 @@ router.post('/recipes/:id', editRecipe)
 async function adminPanel(req, res, next) {
   const { entities, metrics } = await controller.getData();
 
-  res.render('adminPanel', { entities, metrics });
+  res.render('adminPanel', {
+    entities,
+    metrics,
+    user: req.session.user,
+  });
 };
 
 async function addAdminView(req, res, next) {
@@ -85,6 +104,26 @@ async function editRecipe(req, res, next) {
       recipe: data.recipe,
       error: 'Problemas al actualizar',
     });
+};
+
+async function loginView(req, res, next) {
+  res.render('login');
+};
+
+async function login(req, res, next) {
+  const body = { ...req.body };
+  const authorized = await controller.loginAdmin(body, req);
+
+  authorized
+    ? res.redirect('/admin')
+    : res.render('login', {
+      error: 'Credenciales invalidas'
+    });
+};
+
+async function logout(req, res, next) {
+  controller.logoutAdmin(req);
+  res.redirect('/admin/login');
 };
 
 module.exports = router;
