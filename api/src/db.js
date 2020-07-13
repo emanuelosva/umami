@@ -15,6 +15,7 @@ const connect = async (dbURI) => {
     await db.connect(dbURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true,
     });
 
     console.log('[db] Successfully connected');
