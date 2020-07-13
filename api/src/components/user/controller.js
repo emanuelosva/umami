@@ -6,7 +6,7 @@
  *
 */
 
-const auth = require('../../auth');
+const bcrypt = require('bcrypt');
 const store = require('./store');
 
 const list = async (filter) => {
@@ -28,7 +28,7 @@ const add = async (body) => {
     name: body.name,
     email: body.email,
     plan: body.plan,
-    password: await auth.hash(body.password),
+    password: await bcrypt.hash(body.password),
     created: new Date(),
     updated: new Date(),
   };
@@ -53,7 +53,7 @@ const update = async (id, body) => {
   let user = {
     name: body.name,
     email: body.email,
-    password: await auth.hash(body.password),
+    password: await bcrypt.hash(body.password),
     plan: body.plan,
     updated: new Date(),
   };
