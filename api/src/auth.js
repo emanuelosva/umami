@@ -16,7 +16,16 @@ const compare = async (password, hashedPassword) => {
   return await bcrypt.compare(password, hashedPassword);
 };
 
+const basicAuth = (req, res, next) => {
+  if (req.session && req.session.admin && req.session.user) {
+    return next();
+  }
+
+  return res.redirect('/admin/login');
+};
+
 module.exports = {
   hash,
   compare,
+  basicAuth,
 };
