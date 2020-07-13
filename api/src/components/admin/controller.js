@@ -88,6 +88,27 @@ const addAdmin = async (body) => {
   return newAdmin;
 };
 
+const getAdmin = async (id) => {
+  let error;
+  const admin = await store.adminStore.get(id);
+
+  if (admin) return { admin, error };
+  return { admin, error: 'No se encontró ninguna coincidencia' };
+};
+
+const editAdmin = async (id, body) => {
+  if (!id || !body) {
+    return Promise.reject('No id or data')
+  }
+
+  let admin = {
+    user: body.user,
+    password: await auth.hash(body.password),
+  };
+
+  return await store.adminStore.update(id, admin)
+};
+
 const loginAdmin = async (body, req) => {
   try {
     const userlist = await store.adminStore.filter({ user: body.user });
@@ -124,6 +145,8 @@ module.exports = {
   editRecipe,
   deleteRecipe,
   addAdmin,
+  getAdmin,
+  editAdmin,
   loginAdmin,
   logoutAdmin,
 };

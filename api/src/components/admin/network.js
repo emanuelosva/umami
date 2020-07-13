@@ -30,12 +30,14 @@ router.get('/recipes/new', basicAuth, addRecipeView);
 router.get('/recipes/:id', basicAuth, editRecipeView);
 router.get('/recipes/delete/:id', basicAuth, deleteRecipe);
 router.get('/new', basicAuth, addAdminView);
+router.get('/edit/:id', basicAuth, editAdminView)
 router.get('/login', loginView);
 router.post('/new', basicAuth, addAdmin);
+router.post('/edit/:id', basicAuth, editAdmin);
 router.post('/recipes/new', basicAuth, addRecipe);
 router.post('/recipes/:id', basicAuth, editRecipe);
 router.post('/login', login);
-router.get('/logout', basicAuth, logout);
+router.get('/logout', logout);
 
 // --- Callbacks ---
 
@@ -61,6 +63,25 @@ async function addAdmin(req, res, next) {
     ? res.redirect('/admin')
     : res.render('addRecipe', {
       error: 'Error al crear nuevo Admin'
+    });
+};
+
+async function editAdminView(req, res, next) {
+  const data = await controller.getAdmin(req.params.id);
+
+  res.render('editAdmin', {
+    admin: data.admin,
+    error: data.error,
+  });
+};
+
+async function editAdmin(req, res, next) {
+  const result = await controller.editAdmin(req.params.id, { ...req.body });
+
+  result
+    ? res.redirect('/admin/logout')
+    : res.render('editAdmin', {
+      error: 'Error al actualizar',
     });
 };
 
@@ -122,7 +143,7 @@ async function login(req, res, next) {
 };
 
 async function logout(req, res, next) {
-  controller.logoutAdmin(req);
+  req.session = null;
   res.redirect('/admin/login');
 };
 
