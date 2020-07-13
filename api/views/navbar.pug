@@ -2,3 +2,9 @@ nav.navbar.navbar-light.bg-light
   a.navbar-brand(hreg="#")
     img(src="" width="30" height="30" class="d-inline-block align-top" alt="Umami" loading="lazy")
     Umami
+  if user
+    .text-left
+      .d-flex.flex-column.align-items-end.pd-1
+        .badge.badge-pill.badge-primary
+          h6= user
+        a(href='/admin/logout') Salir
