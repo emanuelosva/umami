@@ -44,7 +44,8 @@ block content
                     .card.mb-3
                       .card-body
                         h5.card-title= item.user
-                        a(href=`/admin/${item._id}` class="btn btn-info") Edición
+                        if item.user === user
+                          a(href=`/admin/${item._id}` class="btn btn-info") Edición
 
     br
     span.badge.badge-secondary.mt-5.mb-3.p-2
