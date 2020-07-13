@@ -88,6 +88,35 @@ const addAdmin = async (body) => {
   return newAdmin;
 };
 
+const loginAdmin = async (body, req) => {
+  try {
+    const userlist = await store.adminStore.filter({ user: body.user });
+    const user = userlist[0];
+
+    if (user) {
+      const hashedPassword = user.password;
+      const correctPassword = await auth.compare(body.password, hashedPassword);
+
+      if (correctPassword) {
+        req.session.admin = true;
+        req.session.user = user.user;
+        return true
+      }
+      return false;
+    }
+
+    return false;
+  } catch (error) {
+    console.error(`[adminController] -> ${error}`)
+    return false
+  }
+
+};
+
+const logoutAdmin = (req) => {
+  req.session = null;
+};
+
 module.exports = {
   getData,
   getRecipe,
@@ -95,4 +124,6 @@ module.exports = {
   editRecipe,
   deleteRecipe,
   addAdmin,
+  loginAdmin,
+  logoutAdmin,
 };
