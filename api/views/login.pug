@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    .container.text-center.mt-5.mb-5
+      if error
+        .alert.alert-danger.mb-2(role="alert")= error
+
+      .card.mb-5
+        h5.card-header.info-color.white-text.text-center.py-4
+          strong Iniciar sesión
+        .card-body
+          form(action=`/admin/login` method="POST")
+            .form-group.text-left
+              label(for="user") 
+                span.badge.bagde-pill.badge-primary Username
+              input.mb-2(type="text" class="form-control" id="user" name="user" editable)
+                
+              label(for="password") 
+                span.badge.bagde-pill.badge-primary Password
+              input.mb-2(type="password" class="form-control" id="password" name="password" editable)
+
+              button.btn.btn-primary.w-100.mt-2(type="submit") 
+                strong Entrar
