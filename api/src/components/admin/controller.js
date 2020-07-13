@@ -6,7 +6,8 @@
  *
 */
 
-const auth = require('../../auth');
+const bycrypt = require('bcrypt');
+const basicStrategy = require('../../auth/strategys/basic');
 const store = require('./store');
 const recipeController = require('../recipe/controller');
 
@@ -34,7 +35,7 @@ const getData = async () => {
     shops,
     users,
     admins,
-  ]
+  ];
 
   // Simple Metric (Number of elements)
   const metrics = [];
@@ -57,8 +58,7 @@ const getRecipe = async (id) => {
 
   !id
     ? error = 'Problemas al cargar la receta'
-    : recipe = await store.recipeStore.get(id)
-
+    : recipe = await store.recipeStore.get(id);
   return { recipe, error };
 };
 
@@ -81,9 +81,8 @@ const addAdmin = async (body) => {
 
   const admin = {
     user: body.user,
-    password: await auth.hash(body.password),
+    password: await bycrypt.hash(body.password),
   };
-
   const newAdmin = await store.adminStore.add(admin);
   return newAdmin;
 };
@@ -103,35 +102,21 @@ const editAdmin = async (id, body) => {
 
   let admin = {
     user: body.user,
-    password: await auth.hash(body.password),
+    password: await bycrypt.hash(body.password),
   };
-
   return await store.adminStore.update(id, admin)
 };
 
 const loginAdmin = async (body, req) => {
   try {
-    const userlist = await store.adminStore.filter({ user: body.user });
-    const user = userlist[0];
-
-    if (user) {
-      const hashedPassword = user.password;
-      const correctPassword = await auth.compare(body.password, hashedPassword);
-
-      if (correctPassword) {
-        req.session.admin = true;
-        req.session.user = user.user;
-        return true
-      }
-      return false;
-    }
-
-    return false;
-  } catch (error) {
+    const authorized = await basicStrategy(body, req);
+    console.log(authorized)
+    return authorized;
+  }
+  catch (error) {
     console.error(`[adminController] -> ${error}`)
     return false
   }
-
 };
 
 const logoutAdmin = (req) => {

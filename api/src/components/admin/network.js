@@ -10,7 +10,7 @@ const express = require('express');
 const cockieSession = require('cookie-session');
 const config = require('../../../config');
 const controller = require('./controller');
-const { basicAuth } = require('../../auth');
+const basicAuth = require('../../auth/middleware');
 
 const router = express();
 
@@ -85,6 +85,7 @@ async function editAdmin(req, res, next) {
     });
 };
 
+// For recipes
 async function addRecipeView(req, res, nex) {
   res.render('addRecipe', { error: null });
 };
@@ -127,6 +128,7 @@ async function editRecipe(req, res, next) {
     });
 };
 
+// Admin auth
 async function loginView(req, res, next) {
   res.render('login');
 };
@@ -143,7 +145,7 @@ async function login(req, res, next) {
 };
 
 async function logout(req, res, next) {
-  req.session = null;
+  controller.logoutAdmin(req);
   res.redirect('/admin/login');
 };
 
