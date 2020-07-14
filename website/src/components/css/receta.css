@@ -1,0 +1,63 @@
+.contenedor-receta {
+    position: relative;
+    width: 350px;
+    height: auto;			
+    border: 1px solid black;
+    margin: 20px;
+}
+
+.nombre-receta {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    padding: 20px 0;
+    /* identical to box height */
+
+
+    color: #000000;
+}
+
+.contenedor-receta figure {
+    
+    margin: 0;
+    text-align: center;
+    /* height: 50%;
+    overflow: hidden;     */
+    
+}
+
+.receta-datos {
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+}
+
+.texto-gris {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    /* identical to box height */
+
+
+    color: #7E7E7E;
+}
+
+.icono {
+    font-size: 22px;
+}
+
+.receta-caja {
+    display: inline-flex;
+    flex-wrap: wrap;
+    max-width: 100vw;
+    justify-content: space-around;
+}
+
+.foto-receta {
+    background-size: cover;
+}
