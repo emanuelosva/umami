@@ -6,6 +6,7 @@ import * as recetasActions from './actions/recetasActions'
 import Spinner from './Spinner'
 import Fatal from './fatal'
 import Receta from './receta'
+import CarrouselInicial from './carrusel-inicial'
 
 class Inicio extends React.Component {
 
@@ -39,7 +40,12 @@ class Inicio extends React.Component {
       }
       
         return (
+          <div>
+             <CarrouselInicial/>
+             
             <Receta />
+          </div>
+           
         )
     }
 }
@@ -50,4 +56,4 @@ const mapStateToProps = (reducer) => {
 
 
 
-export default  connect(mapStateToProps, recetasActions )(Inicio)
+export default  connect(mapStateToProps, recetasActions )(Inicio) 

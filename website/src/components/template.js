@@ -11,6 +11,10 @@ import Button from 'react-bootstrap/Button'
 
 import { Link } from 'react-router-dom'
 
+import logoUmami from '../assets/logo-umami.png'
+import findImage from '../assets/find.png'
+import carritoCompras from '../assets/carrito-compras.png'
+
 
 
 class Template extends React.Component {
@@ -18,8 +22,36 @@ class Template extends React.Component {
     render() {    
         return(
 
-           
-                <div className = "barra-superior ">
+            <div className = "barra-superior ">  
+                <div >
+
+                    <nav>
+                    <div className="umami_image">
+                        <a href="#"> <img src={logoUmami} alt=""/></a>
+                    </div> 
+                    <div className="nav_options">
+                        <ul>
+                            <li><a href="#">Categorias</a> </li>
+                            <li>
+                                <div className="main-input-container">
+                                    
+                                    <input className="main-input" type="text"/>
+                                    <a href=""></a>
+                                    <span className="search-icon">
+                                        <img src={findImage} alt=""/>
+                                    </span>
+
+                                </div>
+                            </li>
+                            <li><a href="#">Entrar / registro</a></li>
+                            <li><a href="#">Carrito<img src ={carritoCompras} alt=""/></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                </div>
+
+                    
                     {/* <Navbar bg="light" expand="lg">
                         <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -45,8 +77,34 @@ class Template extends React.Component {
                     </Navbar> */}
                     
                          {this.props.children}
+
+                         <footer className= "footer">
+                            <figure className="contenedor-logo-imagen">
+                                <div className="umami_image">
+                                    <a href="#"> <img src={logoUmami} alt=""/></a>
+                                </div>
+                                
+                                <p>Página diseñada para que todos podamos ser chef alguna vez <br/>
+                                en la vida y para dejar una sensación agradable a nuestros seres queridos</p>
+                            </figure>
+                            <hr className="separador-footer"/>
+                            <ul className="contenedor-creditos-footer">
+                                <li>Toda la informacion es tomada de: <br/><br/><a href="#">www.abc.com</a></li>
+                                <li> Diseño y maquetación:<br/><br/>
+                                    Nelson Alayon <br/>
+                                    Jaime Piratova</li>
+                                <li> Backend:<br/><br/>
+                                    Enmanuel Osorio <br/>
+                                    Mario Barbosa <br/>
+                                    Esteban Mongui <br/>
+                                    Andres moreno</li>
+                                <li><a href="#">Entrar / registro</a></li>
+                            </ul>
+                            
+                        </footer>
                     
                    
+               
                 </div>
            
         )

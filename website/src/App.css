@@ -7,3 +7,170 @@ top: 0px;
 margin: 0 auto;
 
 }
+
+/* estilos de la barra de navegación */
+
+nav {
+  margin: 0;
+  padding: 0;
+  /* height: 60px; */
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #FECAAF;
+  font-family: 'Poppins', sans-serif;
+  position: fixed;
+  background-color: white;
+  z-index: 1000;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.nav_options {
+ margin-left: 180px;
+}
+
+li {
+  list-style: none;
+  margin-right: 50px;   
+}
+
+a {
+  text-decoration: none !important;
+  color: black;  
+}
+
+.nav_options img {
+  width: 20px;
+  align-content: center;
+  margin-left: 10px;
+}
+
+.main-input-container {
+  width: 400px;
+  height: 30px;
+  border-radius: 100px;
+  border: 1px solid #dfe1e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;   
+}
+
+.main-input {
+  width: 300px;
+  border: none;
+  outline: none;   
+}
+
+.main-input-container:hover {
+  box-shadow: 0 1px 6px 0 #20212447;
+  border-color: #dfe1e500;
+}
+
+.search-icon {
+  margin-left: 20px;
+}
+
+.umami_image {
+  padding: 20px 0;
+}
+
+.umami_image a img {
+  padding-top: 3px;
+  height: 55px;
+}
+
+/* estilos del footer */
+
+.footer {
+  border: solid;
+  width: 100%;
+   
+  bottom: 0;
+  background-color:#280004;
+  font-size: 12px;
+  font-family: 'Poppins', sans-serif;
+  align-items: center;
+}
+
+.contenedor-creditos-footer {
+  list-style: none;
+  display: flex;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 80%;
+  justify-content: space-between;
+  margin-left: 85px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+}
+
+.contenedor-logo-imagen {
+  text-align: center; 
+  padding-top: 20px;
+  padding-bottom: 0px; 
+  margin-bottom: 20px;  
+}
+
+.separador-footer {
+  border: 1px solid white;
+  width: 80%;
+  size: 10px;
+  padding-top: 0;
+ 
+}
+
+p, li, a {
+  color: white;
+  text-decoration: none;   
+}
+
+/* estilos del carrusel de navegacion */
+
+.contenedor-item-carrusel {
+  background: #280004;
+  color:white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 100px ;
+ 
+}
+
+.contenedor-item-carrusel h1 {
+font-family: Playball;
+font-style: normal;
+font-weight: normal;
+font-size: 64px;
+line-height: 80px;
+}
+
+.contenedor-item-carrusel h3 {
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 30px;
+}
+
+.contenedor-item-carrusel a {
+  font-family: Poppins;
+font-style: normal;
+font-weight: bold;
+font-size: 15px;
+line-height: 22px; 
+}
+
+.contenedor-item-carrusel hr {
+ margin:1px solid white; 
+}
+
+
