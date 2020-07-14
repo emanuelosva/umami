@@ -1,0 +1,66 @@
+nav {
+    margin: 0;
+    padding: 0;
+    height: 60px;
+    display: flex;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px #FECAAF;
+    font-family: 'Poppins', sans-serif;
+ }
+
+ nav ul {
+    display: flex;
+    align-items: center;
+}
+
+.nav_options {
+   margin-left: 180px;
+}
+
+li {
+    list-style: none;
+    margin-right: 50px;   
+}
+
+a {
+    text-decoration: none;
+    color: black;  
+}
+
+.nav_options img {
+    width: 20px;
+    align-content: center;
+    margin-left: 10px;
+}
+
+.main-input-container {
+    width: 400px;
+    height: 30px;
+    border-radius: 100px;
+    border: 1px solid #dfe1e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.main-input {
+    width: 300px;
+    border: none;
+    outline: none;   
+}
+
+.main-input-container:hover {
+    box-shadow: 0 1px 6px 0 #20212447;
+    border-color: #dfe1e500;
+}
+
+.search-icon {
+    margin-left: 20px;
+}
+
+.umami_image a img {
+    padding-top: 3px;
+    height: 55px;
+}
