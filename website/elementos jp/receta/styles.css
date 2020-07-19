@@ -1,0 +1,17 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+.receta-general {
+    border: solid 1px black;
+    width: 294px;
+    height: 360px;
+}
+.contenido {
+    display: flex;
+    justify-content: space-around;
+
+    text-align: center;
+}
+h2 {
+    text-align: center;
+}
