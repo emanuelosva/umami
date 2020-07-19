@@ -280,19 +280,38 @@
         }
       }
     },
-    "/auth/login": {
+    "/user/login": {
       "post": {
         "tags": [
           "user"
         ],
         "summary": "Return json web token",
         "description": "Return a json web token if is authenticated",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "type": "string",
+            "description": "user email",
+            "required": true
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "type": "string",
+            "description": "user password",
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
           },
           "400": {
             "description": "Invalid data"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
