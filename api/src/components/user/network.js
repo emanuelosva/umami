@@ -9,14 +9,16 @@
 const express = require('express');
 const response = require('../../network/response');
 const controller = require('./controller');
+const { jwtAuth } = require('../../auth/middleware');
 
 const router = express();
 
 // Recipes router
 router.get('/', listUser);
 router.post('/', addUser);
-router.put('/:id', updateUser);
-router.delete('/:id', removeUser);
+router.post('/login', login);
+router.put('/:id', jwtAuth, updateUser);
+router.delete('/:id', jwtAuth, removeUser);
 
 // Callbacks
 function listUser(req, res, next) {
@@ -37,10 +39,20 @@ function addUser(req, res, next) {
     .catch(next);
 };
 
+function login(req, res, next) {
+  const { email, password } = req.body;
+
+  controller.login({ email, password })
+    .then(token => {
+      response.success(req, res, token, 200);
+    })
+    .catch(next);
+};
+
 function updateUser(req, res, next) {
   controller.update(req.params.id, req.body)
     .then(user => {
-      response.success(req, res, user, 201)
+      response.success(req, res, user, 200)
     })
     .catch(next);
 };
@@ -48,7 +60,7 @@ function updateUser(req, res, next) {
 function removeUser(req, res, next) {
   controller.remove(req.params.id)
     .then(user => {
-      response.success(req, res, user, 201)
+      response.success(req, res, user, 200)
     })
     .catch(next);
 };

@@ -13,6 +13,7 @@ const config = {
   auth: {
     secret: process.env.AUTH_SECRET || 'secret',
     sessionSecret: process.env.SESSION_SECRET || 'secret',
+    jwtSecret: process.env.JWT_SECRET,
   },
   enviroment: {
     development: process.env.DEVELOPMENT || false

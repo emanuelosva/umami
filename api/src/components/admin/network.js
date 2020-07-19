@@ -10,7 +10,7 @@ const express = require('express');
 const cockieSession = require('cookie-session');
 const config = require('../../../config');
 const controller = require('./controller');
-const basicAuth = require('../../auth/middleware');
+const { basicAuth } = require('../../auth/middleware');
 
 const router = express();
 

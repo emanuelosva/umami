@@ -7,7 +7,10 @@
 */
 
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const store = require('./store');
+const boom = require('@hapi/boom');
+const config = require('../../../config');
 
 const list = async (filter) => {
   let user;
@@ -27,8 +30,9 @@ const add = async (body) => {
   let user = {
     name: body.name,
     email: body.email,
+    password: await bcrypt.hash(body.password, 10),
     plan: body.plan,
-    password: await bcrypt.hash(body.password),
+    shops: [],
     created: new Date(),
     updated: new Date(),
   };
@@ -53,7 +57,7 @@ const update = async (id, body) => {
   let user = {
     name: body.name,
     email: body.email,
-    password: await bcrypt.hash(body.password),
+    password: await bcrypt.hash(body.password, 10),
     plan: body.plan,
     updated: new Date(),
   };
@@ -69,10 +73,32 @@ const remove = (id) => {
   return store.remove(id);
 };
 
+const login = async ({ email, password }) => {
+  const [findedUser] = await store.filter({ email });
+  if (!findedUser._id) return Promise.reject(boom.unauthorized());
+
+  const hashedPassword = findedUser.password;
+  const correctPassword = bcrypt.compare(password, hashedPassword);
+  if (!correctPassword) return Promise.reject(boom.unauthorized());
+
+  const payload = {
+    sub: findedUser._id,
+    email: findedUser.email,
+    name: findedUser.name,
+    plan: findedUser.plan,
+  };
+
+  const token = jwt.sign(payload, config.auth.jwtSecret, {
+    expiresIn: '15min'
+  });
+  return token;
+};
+
 module.exports = {
   list,
   add,
   addShop,
   update,
   remove,
+  login,
 };

@@ -9,12 +9,13 @@
 const express = require('express');
 const response = require('../../network/response');
 const controller = require('./controller');
+const { jwtAuth } = require('../../auth/middleware');
 
 const router = express();
 
 // Recipes router
 router.get('/', listShop);
-router.post('/', addShop);
+router.post('/', jwtAuth, addShop);
 router.delete('/:id', removeShop);
 
 // Callbacks
