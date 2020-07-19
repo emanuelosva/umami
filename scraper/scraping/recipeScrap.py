@@ -15,7 +15,7 @@ _XPATH_RECIPE_IMAGE = '//div[@class = "image"]/img/@data-src'
 
 import random
 import re 
-from scrap_fun import get_links, create_url, get_tree 
+from .scrap_fun import get_links, create_url, get_tree
 
 def run_scapper(num_of_recipies=10):
     #categories_link = get_links(_URL_RECETAS, _XPATH_LINKS_CATEGORY_RECIPES)
@@ -44,20 +44,27 @@ def run_scapper(num_of_recipies=10):
         
         if categoria in {"pastas" }:
             categoria = "Pastas"
+            img_ingrediente_url = "https://media.istockphoto.com/photos/italian-pasta-collection-on-rustic-wooden-table-picture-id838578926"
         elif categoria in {"sopas-y-cremas"}:
             categoria = "Sopas y Cremas"
+            img_ingrediente_url = "https://images.freeimages.com/images/large-previews/f5c/corn-soup-1324804.jpg"
         elif categoria in {"granos", "arroz"}:
             categoria = "Granos"
+            img_ingrediente_url = "https://images.freeimages.com/images/large-previews/aa7/boiled-rice-1327721.jpg"
         elif categoria in {"con-vegetales"}:
             categoria = "Vegtariana"
+            img_ingrediente_url = "https://images.freeimages.com/images/large-previews/2a3/vegetable-pattern-1188956.jpg"
         elif categoria in {"carnes", "pescado",  "pollo" }:
             categoria = "Carnes"
+            img_ingrediente_url = "https://images.freeimages.com/images/large-previews/5a0/the-steak-2-1552633.jpg"
         elif categoria in {"postres-faciles", "base-de-leche", "flan-pudding", "tortas-y-ponques", "chocolate" }:
             categoria = "Postres"
+            img_ingrediente_url = "https://images.freeimages.com/images/large-previews/0b5/dessert-1326898.jpg"
 
         recipe_category = create_url(_URL_HOME, get_links(categories_url, _XPATH_LINKS_RECIPES))
         category_list = [categoria]*len(recipe_category)
-        recipe_links.extend(list(zip(recipe_category , category_list)))
+        img_ingrediente_url_list = [img_ingrediente_url]*len(recipe_category)
+        recipe_links.extend(list(zip(recipe_category , category_list, img_ingrediente_url_list)))
                 
     
     recipe_links = list(set(recipe_links))
@@ -72,7 +79,7 @@ def run_scapper(num_of_recipies=10):
         if status:
             recipe_dict["name"] =re.sub(r'\s+',' '," ".join(recipe_tree.xpath(_XPATH_RECIPE_NAME)).strip())
             recipe_dict["servings"] = re.sub(r'\s+',' '," ".join(recipe_tree.xpath(_XPATH_RECIPE_SERVINGS)).strip())
-            recipe_dict["time"] = re.sub(r'\s+',' '," ".join(recipe_tree.xpath(_XPATH_RECIPE_TIME)).strip())
+            recipe_dict["time"] = re.sub(r'\s+',' '," ".join(recipe_tree.xpath(_XPATH_RECIPE_TIME)).strip()).split()[1]
             
             ingredients = []
             for li in  recipe_tree.xpath(_XPATH_RECIPE_INGREDIENTS):
@@ -90,6 +97,8 @@ def run_scapper(num_of_recipies=10):
             recipe_dict["price"] = str(round(random.uniform(1.5 , 20), 2))
 
             recipe_dict["category"] = recipe_url[1]
+
+            recipe_dict["url_ingredient"] = recipe_url[2]
  
         if  recipe_dict:
             id_recipe += 1
@@ -98,3 +107,7 @@ def run_scapper(num_of_recipies=10):
                 break
 
     return recipes_dict_dict
+
+
+if __name__ == "__main__":
+    print(run_scapper(2))
