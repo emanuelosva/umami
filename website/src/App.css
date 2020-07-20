@@ -2,8 +2,6 @@
   /* position: absolute; */
 max-width: 1300px;
 height: 123px;
-left: 0px;
-top: 0px;
 margin: 0 auto;
 
 }
@@ -25,6 +23,8 @@ nav {
   position: fixed;
   background-color: white;
   z-index: 1000;
+  width: 100vw;
+  left: 0;
 }
 
 nav ul {
@@ -33,9 +33,7 @@ nav ul {
   margin: 0;
 }
 
-.nav_options {
- margin-left: 180px;
-}
+
 
 li {
   list-style: none;
@@ -54,7 +52,7 @@ a {
 }
 
 .main-input-container {
-  width: 400px;
+  max-width: 500px;
   height: 30px;
   border-radius: 100px;
   border: 1px solid #dfe1e5;
@@ -64,7 +62,7 @@ a {
 }
 
 .main-input {
-  width: 300px;
+  max-width: 400px;
   border: none;
   outline: none;   
 }
@@ -141,7 +139,8 @@ p, li, a {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  padding-top: 100px ;
+  padding: 150px 0 50px 0 ;
+  max-width: 1300px;
  
 }
 
@@ -162,7 +161,7 @@ line-height: 30px;
 }
 
 .contenedor-item-carrusel a {
-  font-family: Poppins;
+font-family: Poppins;
 font-style: normal;
 font-weight: bold;
 font-size: 15px;
@@ -173,4 +172,18 @@ line-height: 22px;
  margin:1px solid white; 
 }
 
+.contenedor-descripcion-receta-carrusel {
+  max-width: 50%;
+}
 
+/* estilo de navegacion para moviles */
+
+.barra-superior-responsive {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .barra-superior-responsive {
+    display:inherit;
+  }
+}

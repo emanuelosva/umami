@@ -7,6 +7,7 @@ import Spinner from './Spinner'
 import Fatal from './fatal'
 import Receta from './receta'
 import CarrouselInicial from './carrusel-inicial'
+import CarruseBootstrap from './CarruselBootstrap'
 
 class Inicio extends React.Component {
 
@@ -41,7 +42,8 @@ class Inicio extends React.Component {
       
         return (
           <div>
-             <CarrouselInicial/>
+             {/* <CarrouselInicial/> */}
+             <CarruseBootstrap/>
              
             <Receta />
           </div>

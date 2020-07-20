@@ -27,11 +27,19 @@ class Template extends React.Component {
 
                     <nav>
                     <div className="umami_image">
-                        <a href="#"> <img src={logoUmami} alt=""/></a>
+                        <Link to="/"> <img src={logoUmami} alt=""/></Link>
                     </div> 
                     <div className="nav_options">
                         <ul>
-                            <li><a href="#">Categorias</a> </li>
+                            <li><NavDropdown title="Comidas" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="#action/3.1">Carnes</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.2">Postres</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.3">Pastas</NavDropdown.Item>                                
+                                <NavDropdown.Item href="#action/3.4">Granos</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.4">Sopas</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.4">Vegetariano</NavDropdown.Item>
+
+                            </NavDropdown> </li>
                             <li>
                                 <div className="main-input-container">
                                     
@@ -49,32 +57,33 @@ class Template extends React.Component {
                         </ul>
                     </div>
                 </nav>
-                </div>
+                </div>     
 
-                    
-                    {/* <Navbar bg="light" expand="lg">
-                        <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+                <div className="barra-superior-responsive">
+                    <Navbar bg="light" expand="lg">
+                        <Navbar.Brand href="#home"><Link to="/"> <img src={logoUmami} alt=""/></Link></Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="mr-auto">
-                                <Nav.Link href="/">Home</Nav.Link>
-                                <Nav.Link href="/receta">Receta</Nav.Link>
-                                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="/desayuno">Desayunos</NavDropdown.Item>
-                                <NavDropdown.Item href="/Almuerzos">Almuerzos</NavDropdown.Item>
-                                <NavDropdown.Item href="/Comida">Comidas</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Cenas Románticas</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Comidas con amigos</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4"></NavDropdown.Item>
-                                </NavDropdown>
-                            </Nav>                        
-                        </Navbar.Collapse>
-                        <Form inline>
+                            <Nav.Link href="#home">Home</Nav.Link>
+                            <Nav.Link href="#link">Link</Nav.Link>
+                            <NavDropdown title="Comidas" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="#action/3.1">Carnes</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.2">Postres</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.3">Pastas</NavDropdown.Item>                                
+                                <NavDropdown.Item href="#action/3.4">Granos</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.4">Sopas</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.4">Vegetariano</NavDropdown.Item>
+                            </NavDropdown>
+                            </Nav>
+                            <Form inline>
                             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                            <Button variant="outline-primary">Search</Button>
+                            <Button variant="outline-success">Search</Button>
                             </Form>
-                    </Navbar> */}
+                        </Navbar.Collapse>
+                    </Navbar>
+                </div>
+
                     
                          {this.props.children}
 

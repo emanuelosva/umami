@@ -4,58 +4,56 @@ import './css/receta.css'
 import { Link } from 'react-router-dom'   
 
 
-const Receta = (props) => {    
+const Receta = (props) => {  
     
- 
-
     const ponerCarnes = () => (
     
         props.recetas.map((receta, key) => (                  
 
-          <Link to = {`/comoSePrepara/${key}`} className="decoracion-boton">  
-             
-            {receta.category === "Carnes" ?            
+            <Link to = {`/comoSePrepara/${key}`} className="decoracion-boton">  
               
-             <div className="contenedor-receta" key = {receta._id}>
-              <figure>
-                <div style={{ backgroundImage: `url(  ${receta.url_img})`,
-                              height: '250px',
-                              backgroundSize: 'cover'   
-                            }} >
-                </div>              
-              </figure>
-
-
-              <p className="nombre-receta">{receta.name}</p>
-
-              <div className="receta-datos">
+              {receta.category === "Carnes" ?            
                 
-                <div>		
+              <div className="contenedor-receta" key = {receta._id}>
+                <figure className = "imagen-animada">
+                  <div style={{ backgroundImage: `url(${receta.url_img})`,
+                                height: '250px',
+                                backgroundSize: 'cover'   
+                              }} >
+                  </div>              
+                </figure>
 
-              <i className="far fa-user icono"></i>
-              <p className="texto-gris">{Math.round(receta.servings)} personas</p>
-              </div>
 
-              <div>
+                <p className="nombre-receta">{receta.name}</p>
 
-              <i className="fas fa-stopwatch icono"></i>
-              <p className="texto-gris">{receta.time}</p>
-              </div>
-              </div>            		
+                <div className="receta-datos">
+                  
+                  <div>		
 
-            </div>            
+                <i className="far fa-user icono"></i>
+                <p className="texto-gris">{Math.round(receta.servings)} personas</p>
+                </div>
+
+                <div>
+
+                <i className="fas fa-stopwatch icono"></i>
+                <p className="texto-gris">{receta.time}</p>
+                </div>
+                </div>            		
+
+              </div>            
+              
+              
+              : <div style = {{ display:"none"}}></div> }
+
             
+            </Link>                
+              
             
-            : "" }
-
-           
-          </Link>                
-            
-          
-            )        
-        )
+              )        
+          )
      
-    )
+        )
 
     const ponerPostres = () => (
     
@@ -66,7 +64,7 @@ const Receta = (props) => {
           {receta.category === "Postres" ?            
             
            <div className="contenedor-receta" key = {receta._id}>
-            <figure>
+            <figure  className = "imagen-animada">
               <div style={{ backgroundImage: `url(  ${receta.url_img})`,
                             height: '250px',
                             backgroundSize: 'cover'   
@@ -115,7 +113,7 @@ const Receta = (props) => {
         {receta.category === "Pastas" ?            
           
          <div className="contenedor-receta" key = {receta._id}>
-          <figure>
+          <figure  className = "imagen-animada">
             <div style={{ backgroundImage: `url(  ${receta.url_img})`,
                           height: '250px',
                           backgroundSize: 'cover'   
@@ -164,8 +162,8 @@ const ponerGranos = () => (
       {receta.category === "Granos" ?            
         
        <div className="contenedor-receta" key = {receta._id}>
-        <figure>
-          <div style={{ backgroundImage: `url(  ${receta.url_img})`,
+        <figure  className = "imagen-animada">
+          <div  style={{ backgroundImage: `url(  ${receta.url_img})`,
                         height: '250px',
                         backgroundSize: 'cover'   
                       }} >
@@ -213,7 +211,7 @@ const ponerSopas = () => (
       {receta.category === "Sopas y Cremas" ?            
         
        <div className="contenedor-receta" key = {receta._id}>
-        <figure>
+        <figure  className = "imagen-animada">
           <div style={{ backgroundImage: `url(  ${receta.url_img})`,
                         height: '250px',
                         backgroundSize: 'cover'   
@@ -262,7 +260,7 @@ const ponerVegetales = () => (
       {receta.category === "Vegtariana" ?            
         
        <div className="contenedor-receta" key = {receta._id}>
-        <figure>
+        <figure  className = "imagen-animada">
           <div style={{ backgroundImage: `url(  ${receta.url_img})`,
                         height: '250px',
                         backgroundSize: 'cover'   
