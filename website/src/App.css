@@ -1,3 +1,15 @@
+/* Estilos generales */
+
+.receta-caja {
+  display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100vw;
+  justify-content: space-around;
+  
+}
+
+
+
 .barra-superior {
   /* position: absolute; */
 max-width: 1300px;
@@ -96,6 +108,7 @@ a {
   font-size: 12px;
   font-family: 'Poppins', sans-serif;
   align-items: center;
+  margin-top: 50px;
 }
 
 .contenedor-creditos-footer {
@@ -144,15 +157,15 @@ p, li, a {
  
 }
 
-.contenedor-item-carrusel h1 {
+.contenedor-item-carrusel h1, .receta-preparacion-caja-texto h1 {
 font-family: Playball;
 font-style: normal;
 font-weight: normal;
 font-size: 64px;
-line-height: 80px;
+line-height: 60px;
 }
 
-.contenedor-item-carrusel h3 {
+.contenedor-item-carrusel h3, .receta-preparacion-caja-texto h3  {
 font-family: Poppins;
 font-style: normal;
 font-weight: normal;
@@ -176,6 +189,22 @@ line-height: 22px;
   max-width: 50%;
 }
 
+/* estilo de ingredientes, los ingredientes tienen estilos en linea para poder cargar la imagen */
+
+.ingrediente {
+  border: 1px solid black;
+  width: 220px;  
+  text-align: center;
+  padding: 20px;
+  margin: 25px 0 ;  
+}
+
+
+h2 {
+  text-align: center;
+}
+
+
 /* estilo de navegacion para moviles */
 
 .barra-superior-responsive {
@@ -186,4 +215,9 @@ line-height: 22px;
   .barra-superior-responsive {
     display:inherit;
   }
+
+  .barra-superior-desktop {
+    display: none;
+  }
 }
+

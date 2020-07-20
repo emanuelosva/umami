@@ -23,7 +23,7 @@ class Template extends React.Component {
         return(
 
             <div className = "barra-superior ">  
-                <div >
+                <div className="barra-superior-desktop" >
 
                     <nav>
                     <div className="umami_image">
@@ -32,12 +32,12 @@ class Template extends React.Component {
                     <div className="nav_options">
                         <ul>
                             <li><NavDropdown title="Comidas" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Carnes</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Postres</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Pastas</NavDropdown.Item>                                
-                                <NavDropdown.Item href="#action/3.4">Granos</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.4">Sopas</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.4">Vegetariano</NavDropdown.Item>
+                                <NavDropdown.Item href="#carnes">Carnes</NavDropdown.Item>
+                                <NavDropdown.Item href="#postres">Postres</NavDropdown.Item>
+                                <NavDropdown.Item href="#pastas">Pastas</NavDropdown.Item>                                
+                                <NavDropdown.Item href="#granos">Granos</NavDropdown.Item>
+                                <NavDropdown.Item href="#sopas">Sopas</NavDropdown.Item>
+                                <NavDropdown.Item href="#vegetarianos">Vegetariano</NavDropdown.Item>
 
                             </NavDropdown> </li>
                             <li>
@@ -65,16 +65,16 @@ class Template extends React.Component {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="mr-auto">
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#link">Link</Nav.Link>
-                            <NavDropdown title="Comidas" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Carnes</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Postres</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Pastas</NavDropdown.Item>                                
-                                <NavDropdown.Item href="#action/3.4">Granos</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.4">Sopas</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.4">Vegetariano</NavDropdown.Item>
-                            </NavDropdown>
+                                <Nav.Link href="#home">Carrito</Nav.Link>
+                                <Nav.Link href="#link">Registrese/entrar</Nav.Link>
+                                <NavDropdown title="Comidas" id="basic-nav-dropdown">
+                                    <NavDropdown.Item href="#carnes">Carnes</NavDropdown.Item>
+                                    <NavDropdown.Item href="#postres">Postres</NavDropdown.Item>
+                                    <NavDropdown.Item href="#pastas">Pastas</NavDropdown.Item>                                
+                                    <NavDropdown.Item href="#granos">Granos</NavDropdown.Item>
+                                    <NavDropdown.Item href="#sopas">Sopas</NavDropdown.Item>
+                                    <NavDropdown.Item href="#vegetarianos">Vegetariano</NavDropdown.Item>
+                                </NavDropdown>
                             </Nav>
                             <Form inline>
                             <FormControl type="text" placeholder="Search" className="mr-sm-2" />

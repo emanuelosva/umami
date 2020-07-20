@@ -8,12 +8,10 @@ const Receta = (props) => {
     
     const ponerCarnes = () => (
     
-        props.recetas.map((receta, key) => (                  
+        props.recetas.map((receta, key) => (                
 
-            <Link to = {`/comoSePrepara/${key}`} className="decoracion-boton">  
-              
-              {receta.category === "Carnes" ?            
-                
+          receta.category === "Carnes" ?            
+            <Link to = {`/comoSePrepara/${key}`} className="decoracion-boton"> 
               <div className="contenedor-receta" key = {receta._id}>
                 <figure className = "imagen-animada">
                   <div style={{ backgroundImage: `url(${receta.url_img})`,
@@ -42,13 +40,10 @@ const Receta = (props) => {
                 </div>            		
 
               </div>            
+              </Link>
               
-              
-              : <div style = {{ display:"none"}}></div> }
+              : "" 
 
-            
-            </Link>                
-              
             
               )        
           )
@@ -59,10 +54,10 @@ const Receta = (props) => {
     
       props.recetas.map((receta, key) => (                  
 
-        <Link to = {`/comoSePrepara/${key}`} className="decoracion-boton">  
+         
            
-          {receta.category === "Postres" ?            
-            
+          receta.category === "Postres" ?            
+             <Link to = {`/comoSePrepara/${key}`} className="decoracion-boton">
            <div className="contenedor-receta" key = {receta._id}>
             <figure  className = "imagen-animada">
               <div style={{ backgroundImage: `url(  ${receta.url_img})`,
@@ -91,12 +86,12 @@ const Receta = (props) => {
             </div>            		
 
           </div>            
+          </Link> 
           
-          
-          : "" }
+          : ""
 
          
-        </Link>                
+                     
           
         
           )        
@@ -108,10 +103,8 @@ const Receta = (props) => {
     
     props.recetas.map((receta, key) => (                  
 
-      <Link to = {`/comoSePrepara/${key}`} className="decoracion-boton">  
-         
-        {receta.category === "Pastas" ?            
-          
+        receta.category === "Pastas" ?            
+          <Link to = {`/comoSePrepara/${key}`} className="decoracion-boton"> 
          <div className="contenedor-receta" key = {receta._id}>
           <figure  className = "imagen-animada">
             <div style={{ backgroundImage: `url(  ${receta.url_img})`,
@@ -140,12 +133,10 @@ const Receta = (props) => {
           </div>            		
 
         </div>            
+      </Link>
         
-        
-        : "" }
-
-       
-      </Link>                
+        : ""   
+                     
         
       
         )        
@@ -157,10 +148,10 @@ const ponerGranos = () => (
     
   props.recetas.map((receta, key) => (                  
 
-    <Link to = {`/comoSePrepara/${key}`} className="decoracion-boton">  
+     
        
-      {receta.category === "Granos" ?            
-        
+      receta.category === "Granos" ?            
+      <Link to = {`/comoSePrepara/${key}`} className="decoracion-boton">
        <div className="contenedor-receta" key = {receta._id}>
         <figure  className = "imagen-animada">
           <div  style={{ backgroundImage: `url(  ${receta.url_img})`,
@@ -190,12 +181,10 @@ const ponerGranos = () => (
 
       </div>            
       
-      
-      : "" }
+       </Link>
+      : "" 
 
      
-    </Link>                
-      
     
       )        
   )
@@ -206,10 +195,9 @@ const ponerSopas = () => (
     
   props.recetas.map((receta, key) => (                  
 
-    <Link to = {`/comoSePrepara/${key}`} className="decoracion-boton">  
-       
-      {receta.category === "Sopas y Cremas" ?            
-        
+            
+      receta.category === "Sopas y Cremas" ?            
+      <Link to = {`/comoSePrepara/${key}`} className="decoracion-boton">
        <div className="contenedor-receta" key = {receta._id}>
         <figure  className = "imagen-animada">
           <div style={{ backgroundImage: `url(  ${receta.url_img})`,
@@ -226,26 +214,22 @@ const ponerSopas = () => (
           
           <div>		
 
-        <i className="far fa-user icono"></i>
+        <i className="far fa-user icono"/>
         <p className="texto-gris">{Math.round(receta.servings)} personas</p>
         </div>
 
         <div>
 
-        <i className="fas fa-stopwatch icono"></i>
+        <i className="fas fa-stopwatch icono"/>
         <p className="texto-gris">{receta.time}</p>
         </div>
         </div>            		
 
       </div>            
       
-      
-      : "" }
-
-     
-    </Link>                
-      
-    
+       </Link>
+      : "" 
+       
       )        
   )
 
@@ -255,10 +239,10 @@ const ponerVegetales = () => (
     
   props.recetas.map((receta, key) => (                  
 
-    <Link to = {`/comoSePrepara/${key}`} className="decoracion-boton">  
+      
        
-      {receta.category === "Vegtariana" ?            
-        
+    receta.category === "Vegtariana" ?            
+      <Link to = {`/comoSePrepara/${key}`} className="decoracion-boton">
        <div className="contenedor-receta" key = {receta._id}>
         <figure  className = "imagen-animada">
           <div style={{ backgroundImage: `url(  ${receta.url_img})`,
@@ -287,13 +271,11 @@ const ponerVegetales = () => (
         </div>            		
 
       </div>            
+      </Link>
       
-      
-      : "" }
+      : "" 
 
      
-    </Link>                
-      
     
       )        
   )
@@ -304,7 +286,7 @@ const ponerVegetales = () => (
           <div>
             <div >
 
-               <div className="titulo-seccion">
+               <div className="titulo-seccion" id= "carnes">
                  <h1>Carnes</h1>
                  </div>
 
@@ -318,7 +300,7 @@ const ponerVegetales = () => (
 
           <div >
 
-               <div className="titulo-seccion">
+               <div className="titulo-seccion" id= "postres">
                  <h1>Postres</h1>
                  </div>
 
@@ -332,7 +314,7 @@ const ponerVegetales = () => (
 
           <div >
 
-               <div className="titulo-seccion">
+               <div className="titulo-seccion" id= "pastas">
                  <h1>Pastas</h1>
                  </div>
 
@@ -346,7 +328,7 @@ const ponerVegetales = () => (
 
           <div >
 
-               <div className="titulo-seccion">
+               <div className="titulo-seccion" id= "granos">
                  <h1>Granos</h1>
                  </div>
 
@@ -360,7 +342,7 @@ const ponerVegetales = () => (
 
           <div >
 
-               <div className="titulo-seccion">
+               <div className="titulo-seccion" id= "sopas">
                  <h1>Sopas</h1>
                  </div>
 
@@ -374,7 +356,7 @@ const ponerVegetales = () => (
 
           <div >
 
-               <div className="titulo-seccion">
+               <div className="titulo-seccion" id= "vegetarianos">
                  <h1>Vegetarianos</h1>
                  </div>
 

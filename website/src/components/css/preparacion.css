@@ -1,0 +1,110 @@
+.prep-container {
+    max-width: 100%;
+    min-height: 404px;
+    border: solid 1px black;
+    display: flex;
+    align-items: center;
+
+   
+}
+.prep-right, .prep-left {
+    max-width: 500px;
+    width: auto;
+    padding: 40px 30px 30px;
+    
+}
+
+.prep-container li {
+    margin-bottom: 15px;
+   }
+
+.texto-preparacion {
+    color: black;
+}
+
+.receta-preparacion-caja-texto {
+    background: rgba(0, 0, 0, 0.33);
+
+    color: white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.receta-preparacion-caja-texto div {
+    width: 50%;
+}
+
+.descripcion-preparacion-receta {
+    margin-top: 30px;
+    display: grid;
+    border: 1px solid #000000;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* estilos del boton */
+
+.seccion-boton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.boton-receta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 349px;
+    height: 70px;
+    background-color: #280004;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+}
+.boton-receta a {
+    /* border: solid 1px red; */
+    color: white;
+    text-decoration: none; 
+    font-size: 15px;
+    font-weight: bold;
+}
+
+hr {
+    width: 70%;
+    border: 1px solid white;
+}
+
+
+@media screen and (max-width: 1024px) {
+
+}
+@media screen and (max-width: 767px) {
+    .prep-container {
+        max-width: 500px;
+        display: block;
+        margin: 0 auto;
+        
+}
+    .prep-image {
+        max-width: 75px;
+        max-height: 75px;
+        margin: 0 auto;
+        text-align: center;   
+    }
+    .prep-right, .prep-left {
+        justify-content: center;
+      
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .prep-right, .prep-left {
+        font-size: 10px;
+        padding-left: 0px;
+    }
+}
+
