@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "title": "Umami API"
   },
-  "host": "umami-api.emanuelosva.vercel.app",
+  "host": "umami-service.vercel.app/api",
   "basePath": "/api",
   "tags": [
     {
@@ -410,7 +410,7 @@
         "description": {
           "type": "string"
         },
-        "usr_image": {
+        "url_image": {
           "type": "string"
         },
         "url_ingredient": {
