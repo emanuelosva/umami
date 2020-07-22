@@ -1,0 +1,115 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+}
+.planes-container {
+    
+    max-width: 800px;
+       
+}
+
+.logo {
+    
+    margin: 0 auto;
+    display: flex;
+}
+.planes-title p {
+    /* border: solid 1px; */
+    font-size: 0.9em;
+    font-weight: bold;
+    
+}
+.planes ul li img {
+    width: 60px;
+    padding: 20px;
+    
+}
+.planes ul li {
+    list-style: none;
+}
+.planes ul {
+    
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+.planes {
+    margin-bottom: 40px;
+}
+.planes a {
+    
+    padding-top: 40px;
+}
+
+h3 {
+    font-size: 1.5em;
+    
+    margin-bottom: -8px;
+}
+table {
+    width: 100%;
+    
+    
+}
+table td {
+    border-bottom: 1px solid black;
+    text-align: center;
+    height: 40px; 
+     
+}
+table td:nth-child(2) {
+    width: 200px;
+}
+table th {
+    text-align: start;
+    border-bottom: 1px solid black;
+   
+}
+.boton {
+    width: 250px;
+    height: 70px;
+    background-color: #280004;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+    
+
+
+
+@media screen and (max-width: 1024px) {
+
+}
+@media screen and (max-width: 767px) {
+    .planes ul li img {
+        width: 50px;
+        padding: 15px;
+    }
+    .planes ul {
+        /* border: solid 1px; */
+        padding-right: 5px; 
+    } 
+}
+
+@media screen and (max-width: 480px) {
+    .planes ul li img {
+        width: 30px;
+        padding: 5px;
+    }
+    .planes ul {
+        /* border: solid 1px; */
+        padding-right: 0px; 
+
+    } 
+    .planes-title p {
+        font-size: 9px;
+    }
+    .planes-title h3 {
+        font-size: 14px;
+    }
+}
