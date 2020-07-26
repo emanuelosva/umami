@@ -204,6 +204,35 @@ h2 {
   text-align: center;
 }
 
+/* estilos del carrito del mercado */
+
+.contenedor-receta-agregada {
+  display: flex;
+  max-width: 1300px; 
+  justify-content: space-around;
+  border: 1px solid black; 
+  align-items: center;
+  margin: 30px;
+  /* justify-content: center; */
+}
+
+.titulo-receta-Agregada {
+  display: flex;
+  margin: 30px;
+  
+}
+.contenedor-boton-continuar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.espaciador {
+  height: 200px;
+}
+
+
+
 
 /* estilo de navegacion para moviles */
 

@@ -51,7 +51,7 @@ function ControlledCarousel(props) {
         )
   
     return (
-      <Carousel activeIndex={index} onSelect={handleSelect} indicators= {false} controls = {false} interval = {10000}>      
+      <Carousel activeIndex={index} onSelect={handleSelect} indicators= {false} controls = {false} interval = {5000}>      
           
         {/* <Carousel.Item >
             <div className="contenedor-item-carrusel" >

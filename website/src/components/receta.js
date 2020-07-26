@@ -237,10 +237,8 @@ const ponerSopas = () => (
 
 const ponerVegetales = () => (
     
-  props.recetas.map((receta, key) => (                  
-
-      
-       
+  props.recetas.map((receta, key) => ( 
+    
     receta.category === "Vegtariana" ?            
       <Link to = {`/comoSePrepara/${key}`} className="decoracion-boton">
        <div className="contenedor-receta" key = {receta._id}>

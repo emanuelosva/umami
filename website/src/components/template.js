@@ -14,13 +14,38 @@ import { Link } from 'react-router-dom'
 import logoUmami from '../assets/logo-umami.png'
 import findImage from '../assets/find.png'
 import carritoCompras from '../assets/carrito-compras.png'
+import { connect } from 'react-redux'
+// import * as recetasActions from './actions/carrtioActions'
 
+import * as recetasActions from './actions/recetasActions'
+import * as preparacionActions from './actions/preparacionActions'
+import * as carritoActions from './actions/carrtioActions'
+
+import Modal from './modal/modal'
+
+const { traerPorReceta: datosParaReceta } = preparacionActions 
 
 
 class Template extends React.Component {
 
-    render() {    
-        return(
+    state = {
+        abierto:false
+    }
+
+
+    componentDidMount() {
+        this.props.guardarRecetas()
+    }  
+
+    handleClick = () => {
+        this.setState({abierto: !this.state.abierto})
+      }
+   
+ 
+  
+
+    render() {       
+            return(
 
             <div className = "barra-superior ">  
                 <div className="barra-superior-desktop" >
@@ -51,8 +76,8 @@ class Template extends React.Component {
 
                                 </div>
                             </li>
-                            <li><a href="#">Entrar / registro</a></li>
-                            <li><a href="#">Carrito<img src ={carritoCompras} alt=""/></a>
+                            <li><button href="#link" onClick={this.handleClick} >Entrar/registro</button></li>
+                            <li><Link to="/carrito">Carrito<img src ={carritoCompras} alt=""/></Link>
                             </li>
                         </ul>
                     </div>
@@ -66,7 +91,10 @@ class Template extends React.Component {
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="mr-auto">
                                 <Nav.Link href="#home">Carrito</Nav.Link>
-                                <Nav.Link href="#link">Registrese/entrar</Nav.Link>
+                                <button href="#link" onClick={this.handleClick}>Registrese/entrar</button>
+
+                                <Modal isOpen = {this.state.abierto} onClose = {this.handleClick}/>
+
                                 <NavDropdown title="Comidas" id="basic-nav-dropdown">
                                     <NavDropdown.Item href="#carnes">Carnes</NavDropdown.Item>
                                     <NavDropdown.Item href="#postres">Postres</NavDropdown.Item>
@@ -106,7 +134,7 @@ class Template extends React.Component {
                                     Enmanuel Osorio <br/>
                                     Mario Barbosa <br/>
                                     Esteban Mongui <br/>
-                                    Andres moreno</li>
+                                   </li>
                                 <li><a href="#">Entrar / registro</a></li>
                             </ul>
                             
@@ -120,4 +148,15 @@ class Template extends React.Component {
 }
 }
 
-export default Template
+const mapStateToProps = (reducers) => {
+    return reducers.clienteCarrito, reducers.recetasReducer
+}
+
+const mapDispatchToProps = {
+    ...recetasActions,
+    datosParaReceta,
+    ...carritoActions
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Template)
+

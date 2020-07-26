@@ -11,9 +11,7 @@ import CarruseBootstrap from './CarruselBootstrap'
 
 class Inicio extends React.Component {
 
-    state = {
-       recetas: []
-    };
+
 
     componentDidMount() {
       // const resultados = await axios.get('https://jsonplaceholder.typicode.com/users')

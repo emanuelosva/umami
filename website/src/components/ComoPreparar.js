@@ -1,25 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Spinner from './Spinner'
-import fatal from './fatal'
 import './css/preparacion.css'
+import Fatal from './fatal'
 
 import * as recetasActions from './actions/recetasActions'
 import * as preparacionActions from './actions/preparacionActions'
-import Fatal from './fatal'
+
+import * as carritoActions from './actions/carrtioActions'
+
 import imagenPreparacion from '../assets/ingredientes.png'
+import usuariosCarritoReducer from '../components/reducers/usuariosCarritoReducer'
 
 const { traerPorReceta: datosParaReceta } = preparacionActions
 
-
 class Preparacion extends React.Component {
-   async componentDidMount () {
+    
 
-        const {
-            recetasTraerTodos,
-            preparacionTraerPorReceta,
-            match: { params: { key } }
-        } = this.props
+   async componentDidMount () {
+       
 
 
         if(!this.props.recetasReducer.recetas.length) {
@@ -56,6 +55,13 @@ class Preparacion extends React.Component {
         const ingredientes = this.props.recetasReducer.recetas[this.props.match.params.key].ingredients 
         const pasos = this.props.recetasReducer.recetas[this.props.match.params.key].instructions
         const category =  this.props.recetasReducer.recetas[this.props.match.params.key].category
+        const imageIngredient =  this.props.recetasReducer.recetas[this.props.match.params.key].url_ingredient
+
+        const llave = parseInt(this.props.match.params.key)
+
+        console.log(`Esto es this.props.match: ${this.props.match.params.key}`)
+
+       
         
         return (
             <div>
@@ -96,7 +102,7 @@ class Preparacion extends React.Component {
                      {ingredientes.map((ingrediente) => 
                 
                         <div className="ingrediente">
-                            <div style={{ backgroundImage: `url(  https://t1.rg.ltmcdn.com/es/images/5/4/8/img_causa_rellena_de_pollo_y_verduras_52845_paso_0_600.jpg)`,
+                            <div style={{ backgroundImage: `url(${imageIngredient})`,
                                 height: '150px',
                                 backgroundSize: 'cover',
                                 borderRadius: "50%",
@@ -140,6 +146,7 @@ class Preparacion extends React.Component {
                 </section>
                 <section className = "seccion-boton">
                     <div class="boton-receta">
+                        <button onClick = {() => this.props.guardarRecetas(llave)}>agregue la receta</button>
                         <a href="#" class="boton">Recibe los ingredientes en tu casa</a>
                         <hr></hr>
 
@@ -156,7 +163,7 @@ class Preparacion extends React.Component {
 
     ponerPreparacionIngredientes = () => {
         
-        console.log(`Esto es lo que hay en this.props.preparacionReducer: ${this.props.preparacionReducer.preparacion}`)
+        
         if(!this.props.recetasReducer.recetas) {
             return  <h1>recetas</h1>
         }
@@ -180,24 +187,13 @@ class Preparacion extends React.Component {
 
         if(!('preparacion_key' in this.props.recetasReducer.recetas[this.props.match.params.key])) {
             return  <h1>no esta preparacion key</h1>
-        }
+        }    
 
-        
-
-        // return (
-        //     this.props.preparacionReducer.preparacion[this.props.match.params.key].map((pasos) => {
-        //     <div>
-        //         <h2>hola</h2>
-        //     </div>
-        // })
-        // )
-        
+      
         
     }
 
-    // ponerRecetaPar(recetaPaso) {
-    //     if(receta)
-    // }
+   
     render() {
 
         console.log(this.props)
@@ -215,12 +211,13 @@ class Preparacion extends React.Component {
 }
 const mapStateToProps = ({recetasReducer, preparacionReducer}) => {
     return {recetasReducer, 
-    preparacionReducer}
+    usuariosCarritoReducer}
 
 }
 
 const mapDispatchToProps = {
     ...recetasActions,
-    datosParaReceta
+    datosParaReceta,
+    ...carritoActions
 }
 export default connect (mapStateToProps, mapDispatchToProps)(Preparacion)
