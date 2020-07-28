@@ -136,6 +136,7 @@ class Template extends React.Component {
                                     Esteban Mongui <br />
             </li>
             <li><a href="#">Entrar / registro</a></li>
+            <li><a href="https://umami-service.vercel.app/">Admin Panel</a></li>
           </ul>
 
         </footer>
