@@ -58,14 +58,14 @@
     align-items: center;
     flex-direction: column;
     width: 349px;
-    height: 70px;
+    height: 50px;
     background-color: #280004;
     text-align: center;
     align-items: center;
     justify-content: center;
 
 }
-.boton-receta a {
+.boton-receta button {
     /* border: solid 1px red; */
     color: white;
     text-decoration: none; 
