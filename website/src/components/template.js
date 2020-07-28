@@ -78,6 +78,8 @@ class Template extends React.Component {
                             </li>
                             <li><button href="#link" onClick={this.handleClick} >Entrar/registro</button></li>
                             <li><Link to="/carrito">Carrito<img src ={carritoCompras} alt=""/></Link>
+                            <li><p style={{color: 'black'}}                               
+                            >{this.props.clienteCarrito.carrito.length-1}</p></li>
                             </li>
                         </ul>
                     </div>
@@ -148,13 +150,12 @@ class Template extends React.Component {
 }
 }
 
-const mapStateToProps = (reducers) => {
-    return reducers.clienteCarrito, reducers.recetasReducer
+const mapStateToProps = ({recetasReducer, clienteCarrito}) => {
+    return { clienteCarrito, recetasReducer}
 }
 
 const mapDispatchToProps = {
-    ...recetasActions,
-    datosParaReceta,
+    ...recetasActions,  
     ...carritoActions
 }
 

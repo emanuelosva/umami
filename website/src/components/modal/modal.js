@@ -13,12 +13,6 @@ import * as carritoActions from '../actions/carrtioActions'
 const { traerPorReceta: datosParaReceta } = preparacionActions 
 
 
-
-const handleChange = () => {
-    window.location.href = "http://localhost:3000/registro"
-}
-
-
 const Ingreso = (props) => {  
 
     const [form, useform] = useState({email:"", name: "", pasword: ""})
@@ -79,7 +73,7 @@ const Ingreso = (props) => {
             <div className="data-record">
                 <form onSubmit = {crearUsuario}>
                     {error ? <p> introduce los datos correctos </p> : null }
-                    
+
                     <p>o regístrate con tu email</p>
                     <input type="text" name="name" placeholder="Ingresa tu nombre" onChange={inputValor} />
                     <input type="email" name="email" placeholder="Correo electrónico" onChange={inputValor} />

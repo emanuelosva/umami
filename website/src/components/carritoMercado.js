@@ -125,6 +125,8 @@ const mapStateToProps = ({recetasReducer, preparacionReducer, clienteCarrito }) 
 
 }
 
+
+
 const mapDispatchToProps = {
     ...recetasActions,
     datosParaReceta,

@@ -1,13 +1,9 @@
 const INITIAL_STATE = {
        // Aca voy a guardar en principio las recetas que el usuario guarda en el carrito del mercado
     carrito: [],
-    modalAbierto:true,
-    user: {
-        name:"juan", 
-        email: "email@email"
-    }, 
+    modalAbierto:true,    
     cargando: false,
-    enviado: null
+    enviado: null,    
 }
  
 
