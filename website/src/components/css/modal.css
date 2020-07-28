@@ -1,5 +1,6 @@
 .fondo-oscuro {
 
+    z-index: 100000;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -11,16 +12,16 @@
     align-items: center;
   }
   
-  .container-register {
+.container-register {
     width: 400px;
     background-color: white;
-    height: 470px;
+    height: 550px;
     border: solid 1px black;
     padding-top: 10px;
     text-align: center;
     font-family: 'Poppins', sans-serif;
   }
-  .logo {
+.logo {
     width: 350px;
     height: 120px;
     text-align: center;
@@ -29,12 +30,11 @@
     
   
   }
-  .logo img {
+.logo img {
     width: 140px;
   }
   
-  
-  .redes-cred button {
+.redes-cred button {
     border: solid 1px rgb(192, 192, 202);
     width: 350px;
     height: 35px;
@@ -46,7 +46,7 @@
     cursor: pointer;
   }
   
-  .data-record {
+.data-record {
     width: inherit;
     background-color: rgb(238, 241, 245);
     margin-top: 30px;
@@ -55,7 +55,7 @@
     
   
   }
-  .data-record p {
+.data-record p {
     font-size: .8em;
     text-align: start;
     margin-left: 25px;
@@ -63,15 +63,15 @@
     
   }
   
-  .data-record input {
+.data-record input {
     width: 337px;
     height: 35px;
     margin-top: 15px;
     padding-left: 10px;
   }
+
   .data-record .login {
     margin-top: 10px;
-    width: 100px;
     height: 35px;
     background-color: #280004;
     color: white; 
@@ -84,11 +84,9 @@
     margin-bottom: 20px;
   }
   .data-record .conditions {
-    width: 348px;
     font-size: 0.5em;
     margin-top: 10px;
-    margin-bottom: 15px;
-    
+    margin-bottom: 5px;
   }
   .data-record .footer {
     text-align: center;
@@ -101,4 +99,3 @@
   .cerrar{
     float: right;
   }
-  
