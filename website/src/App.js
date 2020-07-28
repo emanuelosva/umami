@@ -20,8 +20,8 @@ import Almuerzos from './components/Almuerzos'
 import Comida from './components/comida'
 import ComoPreparar from './components/ComoPreparar'
 import Carrito from './components/carritoMercado'
+import Registro from './components/Registro'
 
-const Registro = () => <div>registrese</div>
 const Planes = () => <div>Planes</div>
 
 const App =() => {
@@ -35,10 +35,10 @@ const App =() => {
            <Route exact path ="/desayuno" component = {Desayuno}/>
            <Route exact path ="/Almuerzos" component = {Almuerzos}/>
            <Route exact path ="/Comida" component = {Comida}/>
-           <Route exact path ="/comoSePrepara/:key" component = {ComoPreparar}/>
-           <Route exact path ="/registro" component = {Registro}/>
+           <Route exact path ="/comoSePrepara/:key" component = {ComoPreparar}/>           
            <Route exact path ="/planes" component = {Planes}/>
            <Route exact path ="/carrito" component = {Carrito}/>
+           <Route exact path ="/registro" component = {Registro}/>
         </Switch>              
 
       </Template>

@@ -56,13 +56,40 @@ export const borrarRecetas = (key) => (dispatch, getState) => {
 
 
 
+  export const registrarse = (data) => async (dispatch, getState) =>     {
 
-  export const ingreso = () => async (dispatch, getState) => {
+       
+        try {
+            const respuesta = await data.body.token;
+            alert("hola mundo")
+        dispatch({
+            type: 'usuario-registrado',
+            payload: respuesta
+            
+        })
+        }
+        catch (error) {
+            console.log(` ${error}`)
+            dispatch({
+                type: 'error',
+                payload:error.message
+                
+            })
+        
+        }
+        
+    }
+  
+
+
+
+
+  export const ingreso = (name, pasword) => async (dispatch, getState) => {
         
         const {data, status} = await axios({
             url: 'https://umami-service.vercel.app/api/user/login',
             method: 'POST',
-            data: { email: "el email", pasword: "el password"}
+            data: { email: name, pasword: pasword}
         });
         const token = data.body.token;        
         
@@ -71,6 +98,8 @@ export const borrarRecetas = (key) => (dispatch, getState) => {
                     payload: token })
 
   }
+
+
 
   export const recetaEnviada = () => async (dispatch, getState) => {
       
