@@ -1,9 +1,11 @@
+
 .contenedor-receta {
     position: relative;
     width: 350px;
     height: auto;			
     border: 1px solid black;
     margin: 20px;
+    overflow: hidden;
 }
 
 .nombre-receta {
@@ -14,17 +16,27 @@
     line-height: 27px;
     text-align: center;
     padding: 20px 0;
+    
     /* identical to box height */
-
-
     color: #000000;
+}
+
+.titulo-seccion {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 45px;
+    display: block;
+    text-align: center;
+    padding: 70px 0 40px 0;
 }
 
 .contenedor-receta figure {
     
     margin: 0;
     text-align: center;
-    /* height: 50%;
+        /* height: 50%;
     overflow: hidden;     */
     
 }
@@ -33,6 +45,7 @@
     display: flex;
     text-align: center;
     justify-content: space-around;
+    
 }
 
 .texto-gris {
@@ -48,16 +61,26 @@
 }
 
 .icono {
-    font-size: 22px;
+    font-size: 22px; 
+    color: black;   
 }
 
-.receta-caja {
-    display: inline-flex;
-    flex-wrap: wrap;
-    max-width: 100vw;
-    justify-content: space-around;
-}
 
 .foto-receta {
     background-size: cover;
+}
+
+.imagen-animada:hover {
+    transform: scale(1.1);
+    animation: animacionImagenes 1s ease-in-out infinite alternate;
+}
+
+@keyframes animacionImagenes {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
 }

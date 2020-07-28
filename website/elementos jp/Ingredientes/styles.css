@@ -1,0 +1,21 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+.ingrediente {
+    border: 1px solid black;
+    width: 196px;
+    height: 227px;
+    text-align: center;  
+}
+
+
+h2 {
+    text-align: center;
+}
+.elipse {
+  
+    margin-top: 10px;
+}
+.ingrediente p {
+    font-size: 12px;
+}

@@ -6,12 +6,12 @@ import * as recetasActions from './actions/recetasActions'
 import Spinner from './Spinner'
 import Fatal from './fatal'
 import Receta from './receta'
+import CarrouselInicial from './carrusel-inicial'
+import CarruseBootstrap from './CarruselBootstrap'
 
 class Inicio extends React.Component {
 
-    state = {
-       recetas: []
-    };
+
 
     componentDidMount() {
       // const resultados = await axios.get('https://jsonplaceholder.typicode.com/users')
@@ -39,7 +39,13 @@ class Inicio extends React.Component {
       }
       
         return (
+          <div>
+             {/* <CarrouselInicial/> */}
+             <CarruseBootstrap/>
+             
             <Receta />
+          </div>
+           
         )
     }
 }
@@ -50,4 +56,4 @@ const mapStateToProps = (reducer) => {
 
 
 
-export default  connect(mapStateToProps, recetasActions )(Inicio)
+export default  connect(mapStateToProps, recetasActions )(Inicio) 

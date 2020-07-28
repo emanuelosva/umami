@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 import reducers from './components/reducers/reducerPrincipal'
 import reduxThunk from 'redux-thunk'
 
+
 const store = createStore(
   reducers, //todos los reducers
   {}, //estado inicial
@@ -17,7 +18,7 @@ const store = createStore(
 ReactDOM.render(
   <React.StrictMode>
     <Provider store = {store}>
-       <App />
+       <App />       
     </Provider>
    
   </React.StrictMode>,

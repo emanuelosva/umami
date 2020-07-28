@@ -1,0 +1,95 @@
+
+.footer {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    background-color:#280004;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+
+
+}
+.logo {
+    
+    text-align: center;
+}
+.staff {
+    
+    
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+ul li {
+    list-style: none;
+    text-decoration: none;   
+}
+.staff .team  {
+    display: flex;
+    justify-content: space-around;
+    
+}
+hr {
+    width: 80%;
+    size: 10px;
+    
+    
+}
+
+
+.header hr {
+    /* color: red; */
+    width: 80%;
+    size: 10px;
+    padding-top: 0;
+}
+
+p, li, a {
+    color: white;
+    text-decoration: none;   
+}
+
+@media screen and (max-width: 1024px) {
+
+}
+@media screen and (max-width: 767px) {
+
+}
+
+@media screen and (max-width: 480px) {
+    
+    .staff .team {
+        
+        display: block;
+        
+        justify-content: center;
+        }
+    .logo img {
+        
+        width: 40%;
+
+        }
+    .logo p {
+        font-size: .8em;
+    }
+    .staff li {
+        font-size: .8em;
+        
+        margin-top: 15px;
+        
+     
+    }
+    .team {
+        display: block;
+        
+        padding: 0;
+    
+    }
+    
+} 
+
+@media screen and (max-width: 320px) {
+
+}
