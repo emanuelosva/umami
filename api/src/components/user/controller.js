@@ -75,10 +75,10 @@ const remove = (id) => {
 
 const login = async ({ email, password }) => {
   const [findedUser] = await store.filter({ email });
-  if (!findedUser._id) return Promise.reject(boom.unauthorized());
+  if (!findedUser) return Promise.reject(boom.unauthorized());
 
   const hashedPassword = findedUser.password;
-  const correctPassword = bcrypt.compare(password, hashedPassword);
+  const correctPassword = await bcrypt.compare(password, hashedPassword);
   if (!correctPassword) return Promise.reject(boom.unauthorized());
 
   const payload = {

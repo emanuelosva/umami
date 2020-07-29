@@ -10,7 +10,7 @@ const response = require('./response');
 
 const errors = (err, req, res, next) => {
   const message = err.message || 'Internal error';
-  const status = err.statusCode || 500;
+  const status = err.statusCode || err.output.statusCode || 500;
 
   response.error(req, res, message, status, err);
 };
