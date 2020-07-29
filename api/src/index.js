@@ -34,6 +34,7 @@ app.use(helmet());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.disable('x-powered-by');
 
 // Static Files
 app.use('/static', express.static(join(__dirname, '..', 'public')));
