@@ -30,7 +30,7 @@ const Registro = (props) => {
 			})
 			const token = data.body
 			sessionStorage.setItem('token', token)
-			window.location.href = "http://localhost:3000/"
+			window.location.href = "/"
 		} catch (error) {
 		}
 	}
